@@ -4,6 +4,7 @@ class CreateTracks < ActiveRecord::Migration
       t.string :name
       t.float :distance
       t.string :time
+      t.string :link
 
       t.timestamps
     end

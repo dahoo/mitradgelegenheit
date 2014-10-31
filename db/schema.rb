@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141031022111) do
     t.string   "name"
     t.float    "distance"
     t.string   "time"
+    t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
