@@ -1,0 +1,2 @@
+class Start < WayPoint
+end
