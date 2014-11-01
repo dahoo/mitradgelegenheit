@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static/about'
+
   resources :way_points
 
   resources :track_points
