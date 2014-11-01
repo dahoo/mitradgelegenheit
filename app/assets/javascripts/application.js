@@ -16,3 +16,4 @@
 // require turbolinks
 //= require leaflet
 //= require leaflet.awesome-markers
+//= require Leaflet.Editable

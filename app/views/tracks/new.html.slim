@@ -1,6 +1,17 @@
 .row
   .col-md-3
     h1 Neue Strecke
-
+    = simple_form_for @track, html: {class: 'form-vertical' } do |f|
+      = f.input :name, label: false, placeholder: 'Name'
+      = f.input :time, label: false, placeholder: 'Zeit'
+      = f.input :link, label: false, placeholder: 'Link'
+      = f.input :track, label_html: {style: 'display: none;'}
+        = hidden_field_tag 'track_track'
+      = f.input :track, label_html: {style: 'display: none;'}
+        = hidden_field_tag 'track_starts'
+      = f.input :track, label_html: {style: 'display: none;'}
+        = hidden_field_tag 'track_ends'
+      //.form-group
+      = f.button :submit
   .col-md-9#map-col
     #map
