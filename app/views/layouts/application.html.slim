@@ -8,15 +8,16 @@ html
     = javascript_include_tag 'application'
     //=, 'data-turbolinks-track' => true
     = stylesheet_link_tag controller_name
-    = puts javascript_include_tag "#{controller_name}.#{action_name}"
     = javascript_include_tag "#{controller_name}.#{action_name}"
     = csrf_meta_tags
+    link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'
+    link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css"
     = yield(:head)
 
     meta name="viewport" content="width=device-width, initial-scale=1"
 
   body
-    nav.navbar.navbar-default role="navigation"
+    nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       .container-fluid
         /! Brand and toggle get grouped for better mobile display
         .navbar-header
@@ -37,7 +38,7 @@ html
             li class="#{'active' if current_page? static_about_path}"
               = link_to 'Über uns', static_about_path
 
-    - if params[:controller] == 'static'
+    - if controller_name == 'static'
       #wrapper.container
         = yield
     - else
