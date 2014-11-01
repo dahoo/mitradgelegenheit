@@ -12,7 +12,6 @@ drawTracks = (map, json) ->
     markerColor: 'red'
   })
   for track in json
-    console.log track
     len = track.points_list.length
     if len > 1
       L.polyline(track.points_list, {color: 'red'}).addTo(map)

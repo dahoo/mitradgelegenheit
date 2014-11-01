@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body{
-  padding:0;
-  margin:0
-}
-
-html,body,#map{
-  height:100%
+#wrapper.container-fluid {
+  padding: 0px
 }

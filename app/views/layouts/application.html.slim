@@ -1,0 +1,45 @@
+doctype 5
+html
+  head
+    title MitRADgelegenheit
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag    'application', media: 'all'
+    //=, 'data-turbolinks-track' => true
+    = javascript_include_tag 'application'
+    //=, 'data-turbolinks-track' => true
+    = stylesheet_link_tag controller_name
+    = puts javascript_include_tag "#{controller_name}.#{action_name}"
+    = javascript_include_tag "#{controller_name}.#{action_name}"
+    = csrf_meta_tags
+    = yield(:head)
+
+    meta name="viewport" content="width=device-width, initial-scale=1"
+
+  body
+    nav.navbar.navbar-default role="navigation"
+      .container-fluid
+        /! Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand MitRADgelegenheit
+        /! Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li class="#{'active' if current_page? root_path}"
+              = link_to 'Alle Strecken', root_path
+            li class="#{'active' if current_page? new_track_path}"
+              = link_to 'Neue Strecke anlegen', new_track_path
+          ul.nav.navbar-nav.navbar-right
+            li class="#{'active' if current_page? static_about_path}"
+              = link_to 'Über uns', static_about_path
+
+    - if params[:controller] == 'static'
+      #wrapper.container
+        = yield
+    - else
+      #wrapper.container-fluid
+        = yield

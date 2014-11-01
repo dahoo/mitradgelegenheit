@@ -11,7 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require leaflet
-//= require_tree .
+//= require leaflet.awesome-markers
