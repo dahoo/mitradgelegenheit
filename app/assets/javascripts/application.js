@@ -17,3 +17,4 @@
 //= require leaflet
 //= require leaflet.awesome-markers
 //= require Leaflet.Editable
+//= require_tree
