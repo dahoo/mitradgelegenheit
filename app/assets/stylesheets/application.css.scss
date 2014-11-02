@@ -33,8 +33,12 @@ $headings-color: #2C3E50;
 
 
 $navbar-border-radius: 0px;
-$navbar-default-bg: 0px;
+$navbar-default-bg: white;
+$navbar-default-color: black;
 $navbar-default-link-active-bg: white;
+$navbar-default-link-active-bg: white;
+$navbar-default-link-active-color: #2980B9;
+$navbar-default-link-hover-color: #27AE60;
 
 body {
   padding-top: 51px;
@@ -48,7 +52,7 @@ h1,h2,h3,h4,h5,h6 {
   font-family: "Lato";
 }
 
-html,body,.container-fluid,#map{
+html,body,.container-fluid,.map{
   height:100%;
 }
 
@@ -79,9 +83,17 @@ html,body,.container-fluid,#map{
   text-decoration: none;
 }
 
+.navbar .nav > li > a:hover {
+  color: #27AE60;
+}
+
 ul.nav li.active a {
   background-color: inherit;
 }
+
+/*a.navbar-brand {
+  padding: 0px 40px 0px 40px;
+} */
 
 .navbar-brand a {
   text-decoration: none;
@@ -96,4 +108,12 @@ select:focus,
 textarea:focus,
 button:focus {
   outline: none;
+}
+
+input.error {
+  border-color: #E74C3C;
+}
+
+.help-inline {
+  display: block;
 }
