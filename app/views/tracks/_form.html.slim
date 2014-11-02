@@ -1,0 +1,13 @@
+= simple_form_for @track, html: {class: 'form-vertical' } do |f|
+  = f.input :name, label: false, placeholder: 'Name', required: true, \
+    input_html: {class: (@track.errors.include?(:name) ? 'error' : '')}
+  = f.input :time, label: false, placeholder: 'Zeit', required: true, \
+    input_html: {class: (@track.errors.include?(:time) ? 'error' : '')}
+  = f.input :link, label: false, placeholder: 'Link (optional)'
+  = f.input :track, label_html: {style: 'display: none;'}
+    = hidden_field_tag 'track_track'
+  = f.input :track, label_html: {style: 'display: none;'}
+    = hidden_field_tag 'track_starts'
+  = f.input :track, label_html: {style: 'display: none;'}
+    = hidden_field_tag 'track_ends'
+  = f.button :submit
