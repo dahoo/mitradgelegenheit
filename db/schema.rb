@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141031022111) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "track_points", force: true do |t|
     t.integer  "track_id"
     t.float    "latitude"
@@ -21,6 +24,8 @@ ActiveRecord::Schema.define(version: 20141031022111) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "track_points", ["track_id"], name: "index_track_points_on_track_id", using: :btree
 
   create_table "tracks", force: true do |t|
     t.string   "name"
@@ -41,6 +46,6 @@ ActiveRecord::Schema.define(version: 20141031022111) do
     t.datetime "updated_at"
   end
 
-  add_index "way_points", ["track_id"], name: "index_way_points_on_track_id"
+  add_index "way_points", ["track_id"], name: "index_way_points_on_track_id", using: :btree
 
 end
