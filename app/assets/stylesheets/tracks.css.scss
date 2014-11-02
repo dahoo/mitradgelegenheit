@@ -1,0 +1,18 @@
+// Place all the styles related to the Tracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.tracks_controller {
+  #wrapper.container-fluid {
+    //padding: 0px
+  }
+
+  .row {
+    height: inherit;
+  }
+
+  #map-col {
+    height: inherit;
+    padding: 0px;
+  }
+}

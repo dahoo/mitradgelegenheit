@@ -12,8 +12,8 @@
  *
  *= require leaflet
  *= require font-awesome
- *= require leaflet.awesome-markers
  *= require_self
+ *= require_tree
  *
  *= depend_on_asset "layers.png"
  *= depend_on_asset "layers-2x.png"

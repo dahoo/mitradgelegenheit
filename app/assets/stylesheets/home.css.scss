@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#wrapper.container-fluid {
-  padding: 0px
+body.home_controller {
+  #wrapper.container-fluid {
+    padding: 0px
+  }
 }
