@@ -55,7 +55,7 @@ class TracksController < ApplicationController
         end
 
         puts @track.track_points
-        format.html { redirect_to @track, notice: 'Track was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Track was successfully created.' }
         format.json { render :show, status: :created, location: @track }
       else
         format.html { render :new }
