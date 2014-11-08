@@ -137,8 +137,8 @@ L.Editable = L.Class.extend({
         return this.featuresLayer.addLayer(layer);
     },
 
-    startPolyline: function (latlng) {
-        var line = this.createPolyline([]);
+    startPolyline: function (latlng, opts) {
+        var line = this.createPolyline([], opts);
         this.connectCreatedToMap(line);
         var editor = line.enableEdit();
         editor.startDrawingForward();
@@ -155,9 +155,9 @@ L.Editable = L.Class.extend({
         return polygon;
     },
 
-    startMarker: function (latlng) {
+    startMarker: function (latlng, opts) {
         latlng = latlng || this.map.getCenter();
-        var marker = this.createMarker(latlng);
+        var marker = this.createMarker(latlng, opts);
         this.connectCreatedToMap(marker);
         var editor = marker.enableEdit();
         editor.startDrawing();
@@ -177,8 +177,8 @@ L.Editable = L.Class.extend({
         return polygon;
     },
 
-    createPolyline: function (latlngs) {
-        var line = new this.options.polylineClass(latlngs, {editOptions: {editTools: this}});
+    createPolyline: function (latlngs, opts) {
+        var line = new this.options.polylineClass(latlngs, $.extend({editOptions: {editTools: this}}, opts));
         this.fireAndForward('editable:created', {layer: line});
         return line;
     },
@@ -189,8 +189,8 @@ L.Editable = L.Class.extend({
         return polygon;
     },
 
-    createMarker: function (latlng) {
-        var marker = new this.options.markerClass(latlng, {editOptions: {editTools: this}});
+    createMarker: function (latlng, opts) {
+        var marker = new this.options.markerClass(latlng, $.extend({editOptions: {editTools: this}}, opts));
         this.fireAndForward('editable:created', {layer: marker});
         return marker;
     }
