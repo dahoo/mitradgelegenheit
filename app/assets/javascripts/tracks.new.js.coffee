@@ -55,21 +55,17 @@ addEnd = ->
 getTrack = (evt) ->
   track_latLngs = map.editTools.featuresLayer.getLayers()[0].getLatLngs()
   track_points = (['' + p.lat + ',' + p.lng] for p in track_latLngs)
-  console.log(track_points)
-  if starts.length == 0
-    start_points = track_points[0]
-  else
-    start_points = (['' + p.lat + ',' + p.lng] for p in (start.getLatLng() for start in starts))
-  if ends.length == 0
-    end_points = track_points[points.length - 1]
-  else
-    end_points = (['' + p.lat + ',' + p.lng] for p in (end.getLatLng() for end in ends))
-  $('#track_track').val(track_points.join(';'))
-  $('#track_starts').val(start_points.join(';'))
-  $('#track_ends').val(end_points.join(';'))
-  console.log $('#track_starts').val()
-  console.log $('#track_ends').val()
-  console.log ''
+
+  start_points = (['' + p.lat + ',' + p.lng] for p in (start.getLatLng() for start in starts))
+  end_points = (['' + p.lat + ',' + p.lng] for p in (end.getLatLng() for end in ends))
+
+  if track_points
+    start_points = track_points[0] if starts.length == 0
+    end_points = track_points[track_points.length - 1] if ends.length == 0
+
+    $('#track_track').val(track_points.join(';'))
+    $('#track_starts').val(start_points.join(';'))
+    $('#track_ends').val(end_points.join(';'))
 
 $(document).ready ->
   if($('#map-create-track').length > 0)

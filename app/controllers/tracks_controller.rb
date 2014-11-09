@@ -32,7 +32,10 @@ class TracksController < ApplicationController
     @track = Track.new(track_params)
 
     respond_to do |format|
-      if @track.save
+      if not params[:track_track].blank? and
+        not params[:track_starts].blank? and
+        not params[:track_ends].blank? and
+        @track.save
         i = 0
         params[:track_track].split(';').each do |point|
           point = point.split(',')
@@ -55,9 +58,11 @@ class TracksController < ApplicationController
         end
 
         puts @track.track_points
-        format.html { redirect_to root_path, notice: 'Track was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Strecke wurde erfolgreich erstellt!' }
         format.json { render :show, status: :created, location: @track }
       else
+        puts params[:track_track], params[:track_track].blank?
+        flash[:error] = 'Keine Strecke angegeben.' if params[:track_track].blank?
         format.html { render :new }
         format.json { render json: @track.errors, status: :unprocessable_entity }
       end
