@@ -40,6 +40,11 @@ $navbar-default-link-active-bg: white;
 $navbar-default-link-active-color: #2980B9;
 $navbar-default-link-hover-color: #27AE60;
 
+$error: #E74C3C;
+$info: #2980b9;
+$success: #27ae60;
+$warning: #f1c40f;
+
 body {
   padding-top: 51px;
 }
@@ -111,9 +116,35 @@ button:focus {
 }
 
 input.error {
-  border-color: #E74C3C;
+  border-color:$error;
 }
 
 .help-inline {
   display: block;
+}
+
+.alert-danger {
+  background-color: $error;
+  color: white;
+  border: none;
+}
+
+.alert {
+  &.alert-info  { background-color: $info }
+  &.alert-danger   { background-color: $error }
+  &.alert-warning   { background-color: $warning }
+  &.alert-success { background-color: $success }
+
+  //.container {
+    // Correct the offset by 5px in horizontal padding to visually improve the alignment of flashes, since the brand
+    // image contents are slightly offsetted to the right.
+    //padding: 15px 20px;
+    color: white;
+    a.close {
+      float: none;
+      vertical-align: middle;
+      margin-left: 10px;
+      color: black;
+    }
+  //}
 }
