@@ -48,6 +48,8 @@ gem 'active_link_to'
 gem 'simple_form'
 gem 'flat-ui-rails'
 
+gem 'devise'
+
 group :development, :test do
   gem 'debase'
   gem 'rspec-rails'
