@@ -17,7 +17,7 @@ ul.icon-list.list-group
     li.list-group-item
       .icon-list-icon
         i.fa.fa-bicycle.fa-2x
-        = @track.start + start.time
+        = "#{start.time} min" if start.time > 0
       .icon-list-description
         = start.description
 ul.icon-list.list-group
@@ -25,6 +25,9 @@ ul.icon-list.list-group
     li.list-group-item
       .icon-list-icon
         i.fa.fa-flag-checkered.fa-2x
-        = end_.time
+        = "#{end_.time} min"
       .icon-list-description
         = end_.description
+
+- if admin_signed_in?
+  = link_to 'Löschen', track_path(@track), method: :delete, data: { confirm: 'Bist du sicher?' }
