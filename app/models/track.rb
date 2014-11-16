@@ -8,4 +8,8 @@ class Track < ActiveRecord::Base
   def points_list
     self.track_points.map{ |p| [p.latitude, p.longitude] }
   end
+
+  def start
+    self.starts.order(:time).first
+  end
 end

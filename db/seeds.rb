@@ -32,15 +32,16 @@ end
 
 track.starts = [Start.create(latitude: 52.5390921,
                              longitude: 13.4240913,
-                             description: 'Start Prenzl. Allee/Danziger Str. mitt. donn. frei. 9:45(zur HU Berlin)')]
+                             description: 'Prenzl. Allee/Danziger Str. mitt. donn. frei. 9:45(zur HU Berlin)')]
 
 track.ends = []
 
-[[52.5206603, 13.3919048, 'Ziel HU Bibliothek mittwochs, donnerstags, freitags(Ankunft ~10:10)'],
- [52.5172132, 13.3944798, 'Ziel: HU Audimax mittwochs, donnerstags + freitags Ankunft ~10:05 Uhr'],
- [52.5199291, 13.4046936, 'Ziel: WiWi-Fakultät (HU) mittwochs, donnerstags, freitags(Ankunft 10 Uhr)']].each do |lat, long, description|
+[[52.5206603, 13.3919048, 25, 'HU Bibliothek mittwochs, donnerstags, freitags(Ankunft ~10:10)'],
+ [52.5172132, 13.3944798, 20, 'HU Audimax mittwochs, donnerstags + freitags Ankunft ~10:05 Uhr'],
+ [52.5199291, 13.4046936, 15, 'WiWi-Fakultät (HU) mittwochs, donnerstags, freitags(Ankunft 10 Uhr)']].each do |lat, long, time, description|
   track.ends.append(End.create latitude: lat,
                                longitude: long,
+                               time: time,
                                description: description)
 end
 
@@ -82,17 +83,19 @@ i = 0
   i += 1
 end
 
-[[52.4915739, 13.4204006, 'Start Hohenstaufenplatz mittwochs 7:30 und 9:20(zur TU Berlin)'],
- [52.4994384, 13.3888793, 'Start Willy-Brand-Haus mittwochs 7:45 und 9:35 (zur TU Berlin)']
-].each do |lat, long, description|
-  track.starts.create(latitude: lat,
+[[52.4915739, 13.4204006, 0, 'Hohenstaufenplatz mittwochs 7:30 und 9:20(zur TU Berlin)'],
+ [52.4994384, 13.3888793, 15, 'Willy-Brand-Haus mittwochs 7:45 und 9:35 (zur TU Berlin)']
+].each do |lat, long, time, description|
+  track2.starts.create(latitude: lat,
                       longitude: long,
+                      time: time,
                       description: description)
 end
 
-track.ends.create latitude: 52.5122511,
+track2.ends.create latitude: 52.5122511,
                   longitude: 13.3269846,
-                  description: 'Ziel TU Berlin(Ankunft ~7:55 und 9:45)'
+                  time: 25,
+                  description: 'TU Berlin(Ankunft ~7:55 und 9:45)'
 
 
 track3 = Track.create name: 'Beuth Hochschule',
@@ -124,10 +127,11 @@ i = 0
   i += 1
 end
 
-track.starts.create(latitude: 52.4766445,
+track3.starts.create(latitude: 52.4766445,
                     longitude: 13.4186840,
-                    description: 'Start Tempelhofer Feld (Oderstr) um 8:50')
+                    description: 'Tempelhofer Feld (Oderstr) um 8:50')
 
-track.ends.create latitude: 52.5451800,
+track3.ends.create latitude: 52.5451800,
                   longitude: 13.3568323,
-                  description: 'Ziel Beuth-Hochschule (Ankunft 9:50)'
+                  time: 60,
+                  description: 'Beuth-Hochschule (Ankunft 9:50)'
