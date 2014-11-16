@@ -11,14 +11,27 @@ drawTracks = (map, json) ->
     icon: 'flag-checkered',
     markerColor: 'red'
   })
+  global_layer = L.featureGroup()
   for track in json
     len = track.points_list.length
+    layer_arr = []
     if len > 1
-      L.polyline(track.points_list, {color: 'red'}).addTo(map)
+      layer_arr.push L.polyline(track.points_list, {color: 'red'})
       for start in track.starts
-        L.marker([start.latitude, start.longitude], {icon: startMarker, title: start.description}).addTo(map)
+        layer_arr.push L.marker([start.latitude, start.longitude], {icon: startMarker, title: start.description})
       for end in track.ends
-        L.marker([end.latitude, end.longitude], {icon: endMarker, title: end.description}).addTo(map)
+        layer_arr.push L.marker([end.latitude, end.longitude], {icon: endMarker, title: end.description})
+
+    link = $("<div data-url='tracks/#{track.id}'>").html("#{track.name}</br><a hfref='tracks/#{track.id}'>Details >></a>").click(->
+      location.href = $(this).data('url')
+      )[0]
+    global_layer.addLayer (L.featureGroup(layer_arr)
+      .bindPopup(link)
+      #.on('click', ->
+      #  alert('Clicked on a group!'))
+      .addTo(map))
+
+  map.fitBounds(global_layer.getBounds(), {padding: [0, 20]})
 
 $(document).ready ->
   if($('#map-all-tracks').length > 0)
