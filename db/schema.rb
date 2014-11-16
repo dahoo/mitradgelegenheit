@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20141115234436) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "time"
+    t.integer  "time",        default: 0
   end
 
   add_index "way_points", ["track_id"], name: "index_way_points_on_track_id", using: :btree
