@@ -48,4 +48,12 @@ gem 'active_link_to'
 gem 'simple_form'
 gem 'flat-ui-rails'
 
+group :development, :test do
+  gem 'debase'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'simplecov'
+  gem 'rspec-legacy_formatters'
+end
+
 gem 'rails_12factor', group: :production
