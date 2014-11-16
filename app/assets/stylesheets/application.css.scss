@@ -148,3 +148,47 @@ input.error {
     }
   //}
 }
+
+.track-detail {
+  margin: 10px 0px;
+}
+
+ul.icon-list {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 5px;
+
+  li {
+    //padding: 5px 3px;
+
+    .icon-list-icon, .icon-list-description {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .icon-list-icon {
+      width: 40px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .no-list-group {
+      padding-left: 25px;
+    }
+  }
+}
+
+.list-group-item {
+  border-left: none;
+  border-right: none;
+  border-radius: 0px !important;
+}
+
+.list-group-item:first-child {
+  border-top-width: 2px;
+}
+
+.list-group-item:last-child {
+  border-bottom-width: 2px;
+}

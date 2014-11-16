@@ -5,10 +5,8 @@ class TracksController < ApplicationController
   # GET /tracks.json
   def index
     @tracks = Track.all
-    p @tracks
     if params[:with_points] == 'true'
       @tracks.includes :track_points
-      p @tracks
     end
   end
 
@@ -57,11 +55,9 @@ class TracksController < ApplicationController
                              longitude: point[1].to_f
         end
 
-        puts @track.track_points
         format.html { redirect_to root_path, notice: 'Strecke wurde erfolgreich erstellt!' }
         format.json { render :show, status: :created, location: @track }
       else
-        puts params[:track_track], params[:track_track].blank?
         flash[:error] = 'Keine Strecke angegeben.' if params[:track_track].blank?
         format.html { render :new }
         format.json { render json: @track.errors, status: :unprocessable_entity }
