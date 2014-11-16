@@ -35,6 +35,9 @@ html
           ul.nav.navbar-nav.navbar-right
             li class="#{'active' if current_page? static_about_path}"
               = link_to 'Über uns', static_about_path
+            - if admin_signed_in?
+              li class="#{'active' if current_page? static_about_path}"
+                = link_to 'Logout', destroy_admin_session_path, method: :delete
 
     - if controller_name == 'static'
       #wrapper.container
