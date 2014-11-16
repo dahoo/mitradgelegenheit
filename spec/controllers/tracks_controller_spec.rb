@@ -154,7 +154,7 @@ RSpec.describe TracksController, :type => :controller do
 
     it "redirects to the tracks list" do
       delete :destroy, {:id => valid_track.to_param}, valid_session
-      expect(response).to redirect_to(tracks_url)
+      expect(response).to redirect_to(root_url)
     end
   end
 
