@@ -39,7 +39,7 @@ html
               li class="#{'active' if current_page? static_about_path}"
                 = link_to 'Logout', destroy_admin_session_path, method: :delete
 
-    - if controller_name == 'static'
+    - if controller_name == 'static' or controller_name == 'sessions'
       #wrapper.container
         = yield
     - else
