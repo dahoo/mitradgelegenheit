@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, only: [:update, :destroy]
+  before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
 
   # GET /tracks
   # GET /tracks.json
@@ -70,8 +70,34 @@ class TracksController < ApplicationController
   # PATCH/PUT /tracks/1.json
   def update
     respond_to do |format|
-      if @track.update(track_params)
-        format.html { redirect_to @track, notice: 'Track was successfully updated.' }
+      if not params[:track_track].blank? and
+          not params[:track_starts].blank? and
+          not params[:track_ends].blank? and
+          @track.update(track_params)
+        i = 0
+        @track.track_points.map(&:delete)
+        params[:track_track].split(';').each do |point|
+          point = point.split(',')
+          @track.track_points.create latitude: point[0].to_f,
+                                     longitude: point[1].to_f,
+                                     index: i
+          i += 1
+        end
+
+        @track.starts.map(&:delete)
+        params[:track_starts].split(';').each do |point|
+          point = point.split(',')
+          @track.starts.create latitude: point[0].to_f,
+                               longitude: point[1].to_f
+        end
+
+        @track.ends.map(&:delete)
+        params[:track_ends].split(';').each do |point|
+          point = point.split(',')
+          @track.ends.create latitude: point[0].to_f,
+                             longitude: point[1].to_f
+        end
+        format.html { redirect_to @track, notice: 'Die Strecke wurde erfolgreich aktualisiert.' }
         format.json { render :show, status: :ok, location: @track }
       else
         format.html { render :edit }
@@ -85,7 +111,7 @@ class TracksController < ApplicationController
   def destroy
     @track.destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Track was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Die Strecke wurde erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end

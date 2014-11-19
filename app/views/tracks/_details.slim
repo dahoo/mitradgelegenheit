@@ -30,4 +30,6 @@ ul.icon-list.list-group
         = end_.description
 
 - if admin_signed_in?
-  = link_to 'Löschen', track_path(@track), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'
+  .btn-group
+    = link_to 'Ändern', edit_track_path(@track), class: 'btn'
+    = link_to 'Löschen', track_path(@track), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'
