@@ -6,7 +6,7 @@ html
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    //= stylesheet_link_tag controller_name
+
     = csrf_meta_tags
     link href='//fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'
     link href="//fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css"
@@ -33,6 +33,9 @@ html
             li class="#{'active' if current_page? new_track_path}"
               = link_to 'Neue Strecke anlegen', new_track_path
           ul.nav.navbar-nav.navbar-right
+            li
+              a href='https://www.facebook.com/mitradgelegenheit'
+                i.fa.fa-facebook
             li class="#{'active' if current_page? static_about_path}"
               = link_to 'Über uns', static_about_path
             - if admin_signed_in?
