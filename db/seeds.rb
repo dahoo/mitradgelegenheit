@@ -7,9 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-track = Track.create name: 'HU Berlin',
+track = Track.create! name: 'HU Berlin',
                      distance: 5,
-                     time: 'mittwochs 9:45',
                      link: 'https://www.facebook.com/events/878752632159575'
 
 i = 0
@@ -30,15 +29,19 @@ i = 0
   i += 1
 end
 
+track.start_times = [StartTime.create(day_of_week: 2, time: (TimeOfDay.new 9, 45)),
+                     StartTime.create(day_of_week: 3, time: (TimeOfDay.new 9, 45)),
+                     StartTime.create(day_of_week: 4, time: (TimeOfDay.new 9, 45))]
+
 track.starts = [Start.create(latitude: 52.5390921,
                              longitude: 13.4240913,
-                             description: 'Prenzl. Allee/Danziger Str. mitt. donn. frei. 9:45(zur HU Berlin)')]
+                             description: 'Prenzl. Allee/Danziger Str.')]
 
 track.ends = []
 
-[[52.5206603, 13.3919048, 25, 'HU Bibliothek mittwochs, donnerstags, freitags(Ankunft ~10:10)'],
- [52.5172132, 13.3944798, 20, 'HU Audimax mittwochs, donnerstags + freitags Ankunft ~10:05 Uhr'],
- [52.5199291, 13.4046936, 15, 'WiWi-Fakultät (HU) mittwochs, donnerstags, freitags(Ankunft 10 Uhr)']].each do |lat, long, time, description|
+[[52.5206603, 13.3919048, 25, 'HU Bibliothek'],
+ [52.5172132, 13.3944798, 20, 'HU Audimax'],
+ [52.5199291, 13.4046936, 15, 'WiWi-Fakultät (HU)']].each do |lat, long, time, description|
   track.ends.append(End.create latitude: lat,
                                longitude: long,
                                time: time,
@@ -47,7 +50,6 @@ end
 
 track2 = Track.create name: 'TU Berlin',
                       distance: 7,
-                      time: 'mittwochs 7:30',
                       link: 'https://www.facebook.com/events/346185055556761'
 
 i = 0
@@ -83,8 +85,11 @@ i = 0
   i += 1
 end
 
-[[52.4915739, 13.4204006, 0, 'Hohenstaufenplatz mittwochs 7:30 und 9:20(zur TU Berlin)'],
- [52.4994384, 13.3888793, 15, 'Willy-Brand-Haus mittwochs 7:45 und 9:35 (zur TU Berlin)']
+track2.start_times = [StartTime.create(day_of_week: 2, time: (TimeOfDay.new 7, 30)),
+                     StartTime.create(day_of_week: 2, time: (TimeOfDay.new 9, 20))]
+
+[[52.4915739, 13.4204006, 0, 'Hohenstaufenplatz'],
+ [52.4994384, 13.3888793, 15, 'Willy-Brand-Haus']
 ].each do |lat, long, time, description|
   track2.starts.create(latitude: lat,
                       longitude: long,
@@ -95,12 +100,11 @@ end
 track2.ends.create latitude: 52.5122511,
                   longitude: 13.3269846,
                   time: 25,
-                  description: 'TU Berlin(Ankunft ~7:55 und 9:45)'
+                  description: 'TU Berlin'
 
 
 track3 = Track.create name: 'Beuth Hochschule',
-                      distance: 11,
-                      time: 'montags 8:50'
+                      distance: 11
 
 i = 0
 [[52.4766641, 13.4187376],
@@ -127,11 +131,13 @@ i = 0
   i += 1
 end
 
+track3.start_times = [StartTime.create(day_of_week: 2, time: (TimeOfDay.new 8, 50))]
+
 track3.starts.create(latitude: 52.4766445,
                     longitude: 13.4186840,
-                    description: 'Tempelhofer Feld (Oderstr) um 8:50')
+                    description: 'Tempelhofer Feld (Oderstr)')
 
 track3.ends.create latitude: 52.5451800,
                   longitude: 13.3568323,
                   time: 60,
-                  description: 'Beuth-Hochschule (Ankunft 9:50)'
+                  description: 'Beuth-Hochschule'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115234436) do
+ActiveRecord::Schema.define(version: 20141213234429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20141115234436) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "start_times", force: true do |t|
+    t.integer  "day_of_week"
+    t.time     "time"
+    t.integer  "track_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "start_times", ["track_id"], name: "index_start_times_on_track_id", using: :btree
 
   create_table "track_points", force: true do |t|
     t.integer  "track_id"
