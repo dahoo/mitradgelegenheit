@@ -1,13 +1,12 @@
 FactoryGirl.define do
   factory :track do
     name 'Mitradgelegenheit'
-    time 'montags 8:00'
+    start_times FactoryGirl.create_list(:start_time, 3)
     track_points {[FactoryGirl.create(:track_point),
                    FactoryGirl.create(:track_point_2),
                    FactoryGirl.create(:track_point_3)]}
     starts {[FactoryGirl.create(:start)]}
     ends   {[FactoryGirl.create(:end)]}
-
 
     factory :track_attributes do
       name 'Mitradgelegenheit'
