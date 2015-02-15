@@ -58,7 +58,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'simplecov'
-  gem 'rspec-legacy_formatters'
 end
 
 gem 'rails_12factor', group: :production
