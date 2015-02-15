@@ -3,10 +3,10 @@ class StartTime < ActiveRecord::Base
   serialize :time, Tod::TimeOfDay
 
   def day_of_week_name
-    (I18n.t :'date.day_names')[self.day_of_week % 7]
+    (I18n.t :'date.day_names')[(day_of_week + 1) % 7]
   end
 
   def time_h_m
-    self.time.strftime('%H:%M')
+    time.strftime('%H:%M')
   end
 end

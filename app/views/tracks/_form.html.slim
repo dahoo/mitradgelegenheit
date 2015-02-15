@@ -1,13 +1,26 @@
 = simple_form_for @track, html: {class: 'form-vertical' } do |f|
   = f.input :name, label: false, placeholder: 'Name', required: true, \
     input_html: {class: (@track.errors.include?(:name) ? 'error' : '')}
-  = f.input :time, label: false, placeholder: 'Zeit', required: true, \
-    input_html: {class: (@track.errors.include?(:time) ? 'error' : '')}
   = f.input :link, label: false, placeholder: 'Facebook-Event (optional)'
+
+  #start_times
+    = f.simple_fields_for :start_times do |start_time|
+      = render 'start_time_fields', :f => start_time
+    .links
+      = link_to_add_association f, :start_times, class: 'btn btn-default btn-xs' do
+        i.fa.fa-plus.mr5
+        =" Start-Zeit"
+  
+  /div
+  /  = f.nested_fields_for :starts do |ff|
+  /    = ff.remove_nested_fields_link
+  /    = ff.input :description
+  /  = f.add_nested_fields_link :starts
+  
   = f.input :track, label_html: {style: 'display: none;'}
     = hidden_field_tag 'track_track'
   = f.input :track, label_html: {style: 'display: none;'}
     = hidden_field_tag 'track_starts'
   = f.input :track, label_html: {style: 'display: none;'}
     = hidden_field_tag 'track_ends'
-  = f.button :submit
+  = f.button :submit, class: 'btn btn-primary'

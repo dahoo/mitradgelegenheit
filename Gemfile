@@ -47,7 +47,8 @@ gem 'autoprefixer-rails'
 gem 'active_link_to'
 gem 'simple_form'
 gem 'flat-ui-rails'
-gem 'nested_form_fields'
+#gem 'nested_form_fields'
+gem "cocoon"
 
 gem 'devise'
 gem 'tod'

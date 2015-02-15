@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  #include TracksHelper
   before_action :set_track, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
 
@@ -124,6 +125,6 @@ class TracksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def track_params
-      params.require(:track).permit(:name, :distance, :time, :link, :track)
+      params.require(:track).permit(:name, :distance, :time, :link, :track, start_times_attributes: [:id, :day_of_week, :time, :_destroy])
     end
 end

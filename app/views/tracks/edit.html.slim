@@ -1,0 +1,9 @@
+- title 'Strecke editieren'
+.row
+  .col-md-3 style='margin-bottom: 10px'
+    h1 = yield :title
+    .hidden#track-id
+      = @track.id
+    = render 'form'
+  .col-md-9#map-col
+    .map#map-edit-track
