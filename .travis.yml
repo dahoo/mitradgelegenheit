@@ -1,5 +1,5 @@
 language: ruby
 rvm:
   - 2.1
-before_script:
-  - bundle exec rake db:reset db:test:prepare
+script:
+  - bundle exec rake ci:setup ci:spec
