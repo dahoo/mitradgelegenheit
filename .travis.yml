@@ -2,4 +2,4 @@ language: ruby
 rvm:
   - 2.1
 before_script:
-  - rake db:reset db:test:prepare
+  - bundle exec rake db:reset db:test:prepare
