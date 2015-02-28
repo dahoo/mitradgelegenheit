@@ -5,6 +5,8 @@ class Track < ActiveRecord::Base
   has_many :start_times, dependent: :destroy, autosave: true
 
   accepts_nested_attributes_for :start_times
+  accepts_nested_attributes_for :starts
+  accepts_nested_attributes_for :ends
 
   validates :name, presence: true
 

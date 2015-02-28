@@ -56,16 +56,20 @@
         },
 
         _createInner: function() {
-            var iconClass, iconSpinClass = "", iconColorClass = "", iconColorStyle = "", options = this.options;
+            var iconClass, iconSpinClass = "", iconColorClass = "", iconColorStyle = "", text = "", options = this.options;
 
-            if(options.icon.slice(0,options.prefix.length+1) === options.prefix + "-") {
-                iconClass = options.icon;
+            if(options.text && typeof options.text === "string") {
+                text = options.text;
             } else {
-                iconClass = options.prefix + "-" + options.icon;
-            }
+              if(options.icon.slice(0,options.prefix.length+1) === options.prefix + "-") {
+                  iconClass = options.icon;
+              } else {
+                  iconClass = options.prefix + "-" + options.icon;
+              }
 
-            if(options.spin && typeof options.spinClass === "string") {
-                iconSpinClass = options.spinClass;
+              if(options.spin && typeof options.spinClass === "string") {
+                  iconSpinClass = options.spinClass;
+              }
             }
 
             if(options.iconColor) {
@@ -76,7 +80,7 @@
                 }
             }
 
-            return "<i " + iconColorStyle + "class='" + options.extraClasses + " " + options.prefix + " " + iconClass + " " + iconSpinClass + " " + iconColorClass + "'></i>";
+            return "<i " + iconColorStyle + "class='" + options.extraClasses + " " + options.prefix + " " + iconClass + " " + iconSpinClass + " " + iconColorClass + "'>" + text + "</i>";
         },
 
         _setIconStyles: function (img, name) {

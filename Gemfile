@@ -54,10 +54,15 @@ gem 'devise'
 gem 'tod'
 gem 'rails-i18n'
 
-group :development, :test do
+group :development do
+  gem 'simplecov'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'simplecov'
 end
 
 gem 'rails_12factor', group: :production

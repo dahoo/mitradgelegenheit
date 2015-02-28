@@ -15,4 +15,16 @@ body.tracks_controller {
     height: inherit;
     padding: 0px;
   }
+
+  &.new_action, &.show_action {
+    #wrapper {
+      overflow: hidden;
+    }
+
+    #side-bar {
+      height: 100%;
+      overflow: auto;
+      padding-bottom: 20px;
+    }
+  }
 }

@@ -1,0 +1,6 @@
+.nested-fields
+  = f.input :end, label: false, input_html: {class: 'span'}, wrapper_html: {class: 'controls controls-row'} do
+    span#number.awesome-marker-icon-red.awesome-marker style='position:initial;float:left;margin-right: 2px'
+      i.icon-white style="font-style:inherit" 1
+    = f.input :description, label: false, placeholder: 'Beschreibung'
+    = f.input :time, required: true, label: 'Fahrtzeit (Minuten)'
