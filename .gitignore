@@ -14,3 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/coverage
+
+*.idea
+*.rspec
+*.iml
+*.sublime*
+
+# Linux
+*~
