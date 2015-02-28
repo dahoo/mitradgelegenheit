@@ -1,7 +1,13 @@
 .nested-fields
   = f.input :start_time, label: false, input_html: {class: 'span'}, wrapper_html: {class: 'controls controls-row'} do
-    = f.select :day_of_week, days_of_week_names, required: true, label: false, wrapper_html: {style: 'display:inline;'}
-    = f.input :time, required: true, label: false, wrapper_html: {style: 'display:inline;'}
-    = link_to_remove_association f, class: 'btn btn-danger btn-xs' do
+    = f.input :day_of_week, collection: days_of_week_names, required: true, label: false,
+      include_blank: false,
+      wrapper_html: {style: 'display:inline;'},
+      input_html: {class: 'form-control btn btn-default btn-sm'}
+    = f.input :time, required: true, label: false,\
+        input_html: {class: 'form-control btn btn-default', style: 'width:initial;display:inline;'},\
+        wrapper_html: {style: 'display:inline;'}
+
+    = link_to_remove_association f, class: 'btn btn-danger btn-sm mls' do
         i.fa.fa-trash
         /=" Start-Zeit"

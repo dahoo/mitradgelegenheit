@@ -182,6 +182,8 @@ $(document).ready ->
     $('#starts').on 'cocoon:after-insert', (e, insertedItem) ->
       index = $('#starts .nested-fields').index(insertedItem) + 1
       $(insertedItem).find('span#number i').text(index)
+      if index == 1
+        $('.track_starts_time').hide()
 
     $('#ends').on 'cocoon:after-insert', (e, insertedItem) ->
       index = $('#ends .nested-fields').index(insertedItem) + 1
