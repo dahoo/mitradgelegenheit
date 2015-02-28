@@ -85,14 +85,6 @@ RSpec.describe TracksController, type: :controller do
   # TracksController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe 'GET index' do
-    it 'assigns all tracks as @tracks' do
-      valid_track
-      get :index, {}, valid_session
-      expect(assigns(:tracks)).to eq([valid_track])
-    end
-  end
-
   describe 'GET show' do
     it 'assigns the requested track as @track' do
       get :show, {id: valid_track.to_param}, valid_session
