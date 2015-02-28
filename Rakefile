@@ -7,7 +7,7 @@ Rails.application.load_tasks
 
 namespace :ci do
   desc 'Setup service for CI'
-  task setup: %w(db:drop:all db:create:all db:schema:load db:seed) do
+  task setup: %w(db:drop db:create db:schema:load) do
   end
 
   desc 'Run specs for CI'

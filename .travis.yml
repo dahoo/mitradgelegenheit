@@ -2,4 +2,7 @@ language: ruby
 rvm:
   - 2.1
 script:
-  - bundle exec rake ci:setup ci:spec
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - bundle exec rake ci:setup RAILS_ENV=test
+  - bundke exec rake ci:spec
