@@ -25,7 +25,6 @@ class Track < ActiveRecord::Base
   end
 
   def color
-    init if color_index.nil?
     Track.colors[color_index % Track.colors.size]
   end
 
