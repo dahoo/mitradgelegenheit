@@ -40,8 +40,12 @@ html
             li class="#{'active' if current_page? static_about_path}"
               = link_to 'Über uns', static_about_path
             - if admin_signed_in?
+              li class="#{'active' if current_page? edit_admin_registration_path}"
+                = link_to edit_admin_registration_path
+                  i.fa.fa-user
               li class="#{'active' if current_page? static_about_path}"
-                = link_to 'Logout', destroy_admin_session_path, method: :delete
+                = link_to destroy_admin_session_path, method: :delete
+                  i.fa.fa-sign-out
 
     - if controller_name == 'static' or controller_name == 'sessions'
       #wrapper.container
