@@ -16,13 +16,14 @@ drawTracks = (map, json) ->
     len = track.points_list.length
     layer_arr = []
     if len > 1
-      layer_arr.push L.polyline(track.points_list, {color: 'red'})
+      layer_arr.push L.polyline(track.points_list, {color: track.color})
       for start in track.starts
         layer_arr.push L.marker([start.latitude, start.longitude], {icon: startMarker, title: start.description})
       for end in track.ends
         layer_arr.push L.marker([end.latitude, end.longitude], {icon: endMarker, title: end.description})
 
-    link = $("<div data-url='tracks/#{track.id}'>").html("#{track.name}</br><a hfref='tracks/#{track.id}'>Details >></a>").click(->
+    link = $("<div data-url='tracks/#{track.id}'>").html(
+      "<div class='lead'>#{track.name}</div><a class='btn btn-primary btn-xs btn-block' href='tracks/#{track.id}'>Details</a>").click(->
       location.href = $(this).data('url')
       )[0]
     global_layer.addLayer (L.featureGroup(layer_arr)

@@ -14,7 +14,7 @@ drawTrack = (map, json) ->
   #map.setView(json.center, 12)
   len = json.points_list.length
   if len > 1
-    line = L.polyline(json.points_list, {color: 'red'}).addTo(map)
+    line = L.polyline(json.points_list, {color: json.color}).addTo(map)
     for start in json.starts
       L.marker([start.latitude, start.longitude], {icon: startMarker, title: start.description}).addTo(map)
     for end in json.ends
