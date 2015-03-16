@@ -93,6 +93,8 @@ RSpec.describe TracksController, type: :controller do
   end
 
   describe 'GET new' do
+    before { sign_in admin }
+
     it 'assigns a new track as @track' do
       get :new, {}, valid_session
       expect(assigns(:track)).to be_a_new(Track)
@@ -109,6 +111,8 @@ RSpec.describe TracksController, type: :controller do
   end
 
   describe 'POST create' do
+    before { sign_in admin }
+
     describe 'with valid params' do
       it 'creates a new Track' do
         expect do
