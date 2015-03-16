@@ -192,3 +192,27 @@ ul.icon-list {
 .list-group-item:last-child {
   border-bottom-width: 2px;
 }
+
+.leaflet-popup-content-wrapper {
+  border-radius: 4px;
+  background-color: #4e6d8d;
+  color: white;
+  box-shadow: none;
+
+  a.btn {
+    color: white;
+  }
+}
+
+.leaflet-popup-tip {
+  background-color: #4e6d8d;
+  box-shadow: none;
+}
+
+.leaflet-popup-close-button {
+  color: white;
+}
+
+.leaflet-container {
+  font: inherit;
+}
