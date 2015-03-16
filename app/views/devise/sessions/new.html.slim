@@ -1,10 +1,14 @@
-h2 Log in
+.row
+  .col-3
+  .col-3
+    .tile
+      h1 Log in
 
-= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-vertical' }  do |f|
-    = f.input :email, required: false, autofocus: true
-    = f.input :password, required: false
-    //= f.input :remember_me, as: :boolean, input_html: {data: {toggle: 'checkbox'}} if devise_mapping.rememberable?
+      = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-vertical' }  do |f|
+          = f.input :email, required: true, autofocus: true, placeholder: 'Email', label: false
+          = f.input :password, required: true, placeholder: 'Passwort', label: false
+          //= f.input :remember_me, as: :boolean, input_html: {data: {toggle: 'checkbox'}} if devise_mapping.rememberable?
 
-    = f.button :submit, "Log in"
+          = f.button :submit, "Log in"
 
-= render "devise/shared/links"
+      = render "devise/shared/links"
