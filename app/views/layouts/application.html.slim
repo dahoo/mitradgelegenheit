@@ -30,8 +30,9 @@ html
           ul.nav.navbar-nav
             li class="#{'active' if current_page? root_path}"
               = link_to 'Alle Strecken', root_path
-            li class="#{'active' if current_page? new_track_path}"
-              = link_to 'Neue Strecke anlegen', new_track_path
+            - if admin_signed_in?
+              li class="#{'active' if current_page? new_track_path}"
+                = link_to 'Neue Strecke anlegen', new_track_path
           ul.nav.navbar-nav.navbar-right
             li
               a href='https://www.facebook.com/mitradgelegenheit'
@@ -44,6 +45,7 @@ html
 
     - if controller_name == 'static' or controller_name == 'sessions'
       #wrapper.container
+        = flash_messages
         = yield
     - else
       #wrapper.container-fluid

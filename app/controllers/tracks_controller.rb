@@ -1,7 +1,7 @@
 class TracksController < ApplicationController
   #include TracksHelper
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, only: [:edit, :update, :destroy]
+  before_filter :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /tracks
   # GET /tracks.json
