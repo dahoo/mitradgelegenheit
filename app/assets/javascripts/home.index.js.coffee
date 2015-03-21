@@ -28,8 +28,6 @@ drawTracks = (map, json) ->
       )[0]
     global_layer.addLayer (L.featureGroup(layer_arr)
       .bindPopup(link)
-      #.on('click', ->
-      #  alert('Clicked on a group!'))
       .addTo(map))
 
   map.fitBounds(global_layer.getBounds(), {padding: [0, 20]})
@@ -41,6 +39,7 @@ $(document).ready ->
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18
     }).addTo(map)
+    window.addLocateTo(map)
 
     $.get('/tracks.json?with_points=true').done (json) ->
       drawTracks(map, json)
