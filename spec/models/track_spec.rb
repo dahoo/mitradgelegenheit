@@ -23,4 +23,26 @@ RSpec.describe Track, type: :model do
 
     it { is_expected.to match_array [track, track_with_date].map(&:id) }
   end
+
+  describe '#point_list' do
+    it 'returns an array of track point coordinates' do
+      expect(track.points_list).to eq [[52.13, 13.14],
+                                       [52.15, 13.14],
+                                       [52.16, 13.16]]
+    end
+  end
+
+  describe '#compute_length' do
+    it 'returns an array of track point coordinates' do
+      expect(track.distance).to be_within(0.1).of(3.98)
+    end
+
+    context 'after update' do
+      it 'returns an array of track point coordinates' do
+        track.track_points << FactoryGirl.create(:track_point)
+        track.save
+        expect(track.distance).to be_within(0.1).of(7.58)
+      end
+    end
+  end
 end

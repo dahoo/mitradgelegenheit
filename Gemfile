@@ -38,6 +38,7 @@ gem 'puma'
 # gem 'debugger', group: [:development, :test]
 
 gem 'leaflet-rails'
+gem 'geocoder'
 
 gem 'slim'
 gem 'font-awesome-sass'
