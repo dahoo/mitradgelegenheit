@@ -12,14 +12,20 @@ RSpec.describe TracksController, type: :controller do
      track_ends: attrs[:ends]}
   end
 
+  let(:is_repeated) { 'on' }
+
   let(:valid_attributes) do
     {
       track: {
-        name: 'Potsdam',
+        name: 'Name',
         link: '',
         start_times_attributes: {
           '1425126589432' => {
+            is_repeated: is_repeated,
             day_of_week: '4',
+            'date(1i)' => '2015',
+            'date(2i)' => '2',
+            'date(3i)' => '3',
             'time(1i)' => '2015',
             'time(2i)' => '2',
             'time(3i)' => '28',
@@ -30,13 +36,13 @@ RSpec.describe TracksController, type: :controller do
         },
         starts_attributes: {
           '1425126589422' => {
-            description: 'Lietzensee',
+            description: 'Start',
             time: '0'
           }
         },
         ends_attributes: {
           '1425126589429' => {
-            description: 'Hasso-Plattner-Institut',
+            description: 'End',
             time: '60'
           }
         }
@@ -66,13 +72,13 @@ RSpec.describe TracksController, type: :controller do
         },
         starts_attributes: {
           '1425126589422' => {
-            description: 'Lietzensee',
+            description: 'Start',
             time: '0'
           }
         },
         ends_attributes: {
           '1425126589429' => {
-            description: 'Hasso-Plattner-Institut',
+            description: 'End',
             time: '60'
           }
         }
@@ -118,6 +124,22 @@ RSpec.describe TracksController, type: :controller do
         expect do
           post :create, valid_attributes, valid_session
         end.to change(Track, :count).by(1)
+      end
+
+      it 'creates a track with a weekday' do
+        post :create, valid_attributes, valid_session
+        expect(Track.first.start_times.first.day_of_week).to eq 4
+        expect(Track.first.start_times.first.date).to eq nil
+      end
+
+      context 'with date' do
+        let(:is_repeated) { 'off' }
+
+        it 'creates a track with a date' do
+          post :create, valid_attributes, valid_session
+          expect(Track.first.start_times.first.day_of_week).to eq nil
+          expect(Track.first.start_times.first.date).to eq Date.new(2015, 2, 3)
+        end
       end
 
       it 'assigns a newly created track as @track' do

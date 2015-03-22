@@ -33,5 +33,13 @@ FactoryGirl.define do
       starts { [FactoryGirl.create(:start)].map {|tp| "#{tp.latitude},#{tp.longitude}" }.join(';') }
       ends   { [FactoryGirl.create(:end)].map {|tp| "#{tp.latitude},#{tp.longitude}" }.join(';') }
     end
+
+    factory :track_with_date do
+      start_times { [FactoryGirl.create(:start_time_with_date)] }
+    end
+
+    factory :track_with_passed_date do
+      start_times { [FactoryGirl.create(:start_time_with_passed_date)] }
+    end
   end
 end

@@ -7,7 +7,7 @@ ul.icon-list
     .icon-list-description
       - @track.start_times.each do |start_time|
         div
-          = "#{start_time.day_of_week_name}, #{start_time.time_h_m }"
+          = "#{start_time.day}, #{start_time.time_h_m }"
   - unless @track.link.blank?
     li.track-detail
       .icon-list-icon.no-list-group

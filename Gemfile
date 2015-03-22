@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 gem 'pg'
+gem 'squeel'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -57,6 +58,10 @@ group :development do
   gem 'simplecov'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'guard-rspec', require: false
+  gem 'libnotify'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :test do

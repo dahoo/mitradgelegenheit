@@ -19,3 +19,8 @@
 //= require Leaflet.Editable
 //= require cocoon
 //= require_tree
+
+
+$(document).ready(function() {
+  $(':checkbox').bootstrapSwitch()
+})

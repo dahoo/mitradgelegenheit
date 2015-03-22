@@ -1,12 +1,12 @@
 class TracksController < ApplicationController
-  #include TracksHelper
+  # include TracksHelper
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /tracks
   # GET /tracks.json
   def index
-    @tracks = Track.all
+    @tracks = Track.active
     if params[:with_points] == 'true'
       @tracks.includes :track_points
     end
@@ -32,10 +32,10 @@ class TracksController < ApplicationController
     @track = Track.new(track_params)
 
     respond_to do |format|
-      if not params[:track_track].blank? and
-        not params[:track_starts].blank? and
-        not params[:track_ends].blank? and
-        @track.save
+      if !params[:track_track].blank? &&
+         !params[:track_starts].blank? &&
+         !params[:track_ends].blank? &&
+         @track.save
         params[:track_track].split(';').each_with_index do |point, i|
           point = point.split(',')
           @track.track_points.create latitude: point[0].to_f,
@@ -46,13 +46,13 @@ class TracksController < ApplicationController
         params[:track_starts].split(';').each_with_index do |point, i|
           point = point.split(',')
           @track.starts[i].update! latitude: point[0].to_f,
-                                  longitude: point[1].to_f
+                                   longitude: point[1].to_f
         end
 
         params[:track_ends].split(';').each_with_index do |point, i|
           point = point.split(',')
           @track.ends[i].update! latitude: point[0].to_f,
-                                longitude: point[1].to_f
+                                 longitude: point[1].to_f
         end
 
         format.html { redirect_to root_path, notice: 'Strecke wurde erfolgreich erstellt!' }
@@ -69,10 +69,10 @@ class TracksController < ApplicationController
   # PATCH/PUT /tracks/1.json
   def update
     respond_to do |format|
-      if not params[:track_track].blank? and
-          not params[:track_starts].blank? and
-          not params[:track_ends].blank? and
-          @track.update(track_params)
+      if !params[:track_track].blank? &&
+         !params[:track_starts].blank? &&
+         !params[:track_ends].blank? &&
+         @track.update(track_params)
         i = 0
         @track.track_points.map(&:delete)
         params[:track_track].split(';').each do |point|
@@ -116,16 +116,15 @@ class TracksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_track
-      @track = Track.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def track_params
-      params.require(:track).permit(:name, :distance, :time, :link, :track,
-        start_times_attributes: [:id, :day_of_week, :time, :_destroy],
-        starts_attributes: [:id, :description, :time, :_destroy],
-        ends_attributes: [:id, :description, :time, :_destroy])
-    end
+  def set_track
+    @track = Track.find(params[:id])
+  end
+
+  def track_params
+    params.require(:track).permit(:name, :distance, :time, :link, :track,
+      start_times_attributes: [:id, :is_repeated, :day_of_week, :date, :time, :_destroy],
+      starts_attributes: [:id, :description, :time, :_destroy],
+      ends_attributes: [:id, :description, :time, :_destroy])
+  end
 end
