@@ -7,13 +7,14 @@ class Track < ActiveRecord::Base
   scope :active, -> { joins { start_times }.where { (start_times.date == nil) | (start_times.date >= Date.today) }.group{id} }
 
   after_initialize :init
-  after_validation :compute_length
 
   accepts_nested_attributes_for :start_times
   accepts_nested_attributes_for :starts
   accepts_nested_attributes_for :ends
 
   validates :name, presence: true
+
+  attr_reader :points
 
   def init
     self.color_index ||= rand * Track.colors.size
@@ -37,11 +38,26 @@ class Track < ActiveRecord::Base
   end
 
   def compute_length
-    sum = 0
+    sum = 0.0
     points_list.each_with_index do |coord, i|
       next if i == 0
       sum += Geocoder::Calculations.distance_between(points_list[i - 1], coord)
     end
-    self.distance = sum
+    update_column :distance, sum
+  end
+
+  def add_track_points(track_point_params)
+    track_points.each(&:delete)
+    on_points(track_point_params) {|point| track_points.create! point }
+    compute_length
+  end
+
+  def on_points(points)
+    points.split(';').each_with_index do |point, i|
+      point = point.split(',')
+      yield latitude: point[0].to_f,
+            longitude: point[1].to_f,
+            index: i
+    end
   end
 end

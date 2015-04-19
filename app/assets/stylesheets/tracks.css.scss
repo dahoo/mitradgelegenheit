@@ -16,7 +16,7 @@ body.tracks_controller {
     padding: 0px;
   }
 
-  &.new_action, &.show_action {
+  &.new_action, &.show_action, &.edit_action {
     /*#wrapper {
       overflow: hidden;
     }*/
@@ -33,5 +33,9 @@ body.tracks_controller {
       padding: 4px 8px;
       font-size: 14px;
     }
+  }
+
+  #start_times .checkbox {
+    padding: inherit;
   }
 }

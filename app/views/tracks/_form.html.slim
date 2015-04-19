@@ -6,7 +6,7 @@
   #start_times
     h3 Startzeiten
     = f.simple_fields_for :start_times do |start_time|
-      /= render 'start_time_fields', locals: {f: start_time}
+      = render 'start_time_fields', f: start_time
     .links
       = link_to_add_association f, :start_times, class: 'btn btn-default btn-xs' do
         i.fa.fa-plus.mr5
@@ -15,21 +15,16 @@
   #starts
     h3 Startpunkte
     = f.simple_fields_for :starts do |start|
-      /= render partial: 'start_fields', f: start
+      = render 'start_fields', f: start
     .links
       = link_to_add_association f, :starts, class: 'hidden' do
 
   #ends
     h3 Endpunkte
     = f.simple_fields_for :ends do |end_|
-      /= render 'end_fields', :f => end_
+      = render 'end_fields', :f => end_
     .links
       = link_to_add_association f, :ends, class: 'hidden' do
 
-  = f.input :track, label_html: {style: 'display: none;'}
-    = hidden_field_tag 'track_track'
-  = f.input :track, label_html: {style: 'display: none;'}
-    = hidden_field_tag 'track_starts'
-  = f.input :track, label_html: {style: 'display: none;'}
-    = hidden_field_tag 'track_ends'
+  = f.input :points, as: :hidden, label_html: {style: 'display: none;'}
   = f.button :submit, class: 'btn btn-primary'

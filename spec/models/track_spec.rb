@@ -34,6 +34,7 @@ RSpec.describe Track, type: :model do
 
   describe '#compute_length' do
     it 'returns an array of track point coordinates' do
+      track.compute_length
       expect(track.distance).to be_within(0.1).of(3.98)
     end
 
@@ -41,6 +42,7 @@ RSpec.describe Track, type: :model do
       it 'returns an array of track point coordinates' do
         track.track_points << FactoryGirl.create(:track_point)
         track.save
+        track.compute_length
         expect(track.distance).to be_within(0.1).of(7.58)
       end
     end

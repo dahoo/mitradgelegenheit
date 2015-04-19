@@ -2,6 +2,8 @@ class StartTime < ActiveRecord::Base
   belongs_to :track
   serialize :time, Tod::TimeOfDay
 
+  scope :active, -> { where{(date.eq nil) | (date >= Date.today) } }
+
   before_save :check_is_repeated
 
   def check_is_repeated

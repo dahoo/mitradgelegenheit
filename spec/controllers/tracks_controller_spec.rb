@@ -7,9 +7,7 @@ RSpec.describe TracksController, type: :controller do
 
   let(:track_attributes) do
     attrs = FactoryGirl.attributes_for :track_attributes
-    {track_track: attrs[:track_points],
-     track_starts: attrs[:starts],
-     track_ends: attrs[:ends]}
+    {points: attrs[:track_points]}
   end
 
   let(:is_repeated) { 'on' }
@@ -37,17 +35,21 @@ RSpec.describe TracksController, type: :controller do
         starts_attributes: {
           '1425126589422' => {
             description: 'Start',
-            time: '0'
+            time: '0',
+            latitude: '52.2',
+            longitude: '13.4'
           }
         },
         ends_attributes: {
           '1425126589429' => {
             description: 'End',
-            time: '60'
+            time: '60',
+            latitude: '52.4',
+            longitude: '13.6'
           }
         }
-      }
-    }.merge track_attributes
+      }.merge(track_attributes)
+    }
   end
 
   let(:valid_track) do
@@ -132,6 +134,16 @@ RSpec.describe TracksController, type: :controller do
         expect(Track.first.start_times.first.date).to eq nil
       end
 
+      it 'creates a track with track points' do
+        post :create, valid_attributes, valid_session
+        expect(Track.first.track_points.size).to eq 3
+      end
+
+      it "sets the track's length" do
+        post :create, valid_attributes, valid_session
+        expect(Track.first.distance).to be_within(0.1).of(4)
+      end
+
       context 'with date' do
         let(:is_repeated) { 'off' }
 
@@ -148,9 +160,9 @@ RSpec.describe TracksController, type: :controller do
         expect(assigns(:track)).to be_persisted
       end
 
-      it 'redirects to the track map' do
+      it 'redirects to the track' do
         post :create, valid_attributes, valid_session
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(Track.first)
       end
     end
 
@@ -172,22 +184,22 @@ RSpec.describe TracksController, type: :controller do
 
     describe 'with valid params' do
       let(:new_attributes) do
-        FactoryGirl.attributes_for :new_track_attributes
+        FactoryGirl.attributes_for(:new_track_attributes).merge(track_attributes)
       end
 
       it 'updates the requested track' do
-        put :update, {id: valid_track.to_param, track: new_attributes}.merge(track_attributes), valid_session
+        put :update, {id: valid_track.to_param, track: new_attributes}, valid_session
         valid_track.reload
         expect(assigns(:track).name).to eq(valid_track.name)
       end
 
       it 'assigns the requested track as @track' do
-        put :update, {id: valid_track.to_param, track: valid_attributes}.merge(track_attributes), valid_session
+        put :update, {id: valid_track.to_param, track: new_attributes}, valid_session
         expect(assigns(:track)).to eq(valid_track)
       end
 
       it 'redirects to the track' do
-        put :update, {id: valid_track.to_param, track: valid_attributes}.merge(track_attributes), valid_session
+        put :update, {id: valid_track.to_param, track: new_attributes}, valid_session
         expect(response).to redirect_to(valid_track)
       end
     end

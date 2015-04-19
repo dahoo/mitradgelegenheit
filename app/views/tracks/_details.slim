@@ -5,7 +5,7 @@ ul.icon-list
     .icon-list-icon.no-list-group
       i.fa.fa-clock-o.fa-2x
     .icon-list-description
-      - @track.start_times.each do |start_time|
+      - @track.start_times.active.each do |start_time|
         div
           = "#{start_time.day}, #{start_time.time_h_m }"
   li.track-detail

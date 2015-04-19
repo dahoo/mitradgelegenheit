@@ -29,9 +29,9 @@ i = 0
   i += 1
 end
 
-track.start_times = [StartTime.create(day_of_week: 2, time: (TimeOfDay.new 9, 45)),
-                     StartTime.create(day_of_week: 3, time: (TimeOfDay.new 9, 45)),
-                     StartTime.create(day_of_week: 4, time: (TimeOfDay.new 9, 45))]
+track.start_times = [StartTime.create!(day_of_week: 2, time: (TimeOfDay.new 9, 45)),
+                     StartTime.create!(day_of_week: 3, time: (TimeOfDay.new 9, 45)),
+                     StartTime.create!(day_of_week: 4, time: (TimeOfDay.new 9, 45))]
 
 track.starts = [Start.create(latitude: 52.5390921,
                              longitude: 13.4240913,

@@ -131,19 +131,25 @@ addEnd = ->
     addField($('#ends .add_fields'))
 
 getTrack = (evt) ->
-  track_latLngs = map.editTools.featuresLayer.getLayers()[0].getLatLngs()
-  track_points = (['' + p.lat + ',' + p.lng] for p in track_latLngs)
+  track_point_lat_lngs = map.editTools.featuresLayer.getLayers()[0].getLatLngs()
+  track_points = (['' + p.lat + ',' + p.lng] for p in track_point_lat_lngs)
 
-  start_points = (['' + p.lat + ',' + p.lng] for p in (start.getLatLng() for start in starts))
-  end_points = (['' + p.lat + ',' + p.lng] for p in (end.getLatLng() for end in ends))
+  start_lat_lngs = (start.getLatLng() for start in starts)
+  end_lat_lngs = (end.getLatLng() for end in ends)
 
   if track_points
-    start_points = track_points[0] if starts.length == 0
-    end_points = track_points[track_points.length - 1] if ends.length == 0
+    start_lat_lngs.push track_point_lat_lngs[0] if starts.length == 0
+    end_lat_lngs.push track_point_lat_lngs[track_point_lat_lngs.length - 1] if ends.length == 0
 
-    $('#track_track').val(track_points.join(';'))
-    $('#track_starts').val(start_points.join(';'))
-    $('#track_ends').val(end_points.join(';'))
+    $('#track_points').val(track_points.join(';'))
+
+  for p, i in start_lat_lngs
+    $('#starts .track_starts_latitude input').eq(i).val(p.lat)
+    $('#starts .track_starts_longitude input').eq(i).val(p.lng)
+
+  for p, i in end_lat_lngs
+    $('#ends .track_ends_latitude input').eq(i).val(p.lat)
+    $('#ends .track_ends_longitude input').eq(i).val(p.lng)
 
 check_to_hide_or_show_remove_link = ->
     if $('#start_times .nested-fields').length < 2
