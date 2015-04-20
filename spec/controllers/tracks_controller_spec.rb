@@ -193,6 +193,12 @@ RSpec.describe TracksController, type: :controller do
         expect(assigns(:track).name).to eq(valid_track.name)
       end
 
+      it "updates the requested track's distance" do
+        put :update, {id: valid_track.to_param, track: new_attributes}, valid_session
+        valid_track.reload
+        expect(assigns(:track).distance).to be_within(0.1).of(4)
+      end
+
       it 'assigns the requested track as @track' do
         put :update, {id: valid_track.to_param, track: new_attributes}, valid_session
         expect(assigns(:track)).to eq(valid_track)

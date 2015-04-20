@@ -47,7 +47,7 @@ class Track < ActiveRecord::Base
   end
 
   def add_track_points(track_point_params)
-    track_points.each(&:delete)
+    track_points.delete_all
     on_points(track_point_params) {|point| track_points.create! point }
     compute_length
   end

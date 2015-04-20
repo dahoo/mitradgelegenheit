@@ -1,6 +1,8 @@
 class TrackPoint < ActiveRecord::Base
   belongs_to :track
 
+  default_scope { order(:index) }
+
   before_save :increase_index
 
   def to_coordinates
