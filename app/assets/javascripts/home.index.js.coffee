@@ -30,12 +30,30 @@ drawTracks = (map, json) ->
       .bindPopup(link)
       .addTo(map))
 
+    L.featureGroup(layer_arr).on
+        mouseover: highlightTrack,
+        mouseout: resetHighlight,
+
   map.fitBounds(global_layer.getBounds(), {padding: [0, 20]})
+
+highlightTrack = (e) ->
+  layer = e.target
+
+  layer.setStyle
+    opacity: 1,
+    weight: 7
+
+resetHighlight = (e) ->
+  layer = e.target
+
+  layer.setStyle
+    opacity: 0.5,
+    weight: 5
 
 $(document).ready ->
   if($('#map-all-tracks').length > 0)
     map = L.map('map-all-tracks').setView([52.517, 13.364], 12)
-    L.tileLayer('http://{s}.tiles.mapbox.com/v3/dahoo.k3dh2bke/{z}/{x}/{y}.png', {
+    L.tileLayer('https://api.tiles.mapbox.com/v4/dahoo.k3dh2bke/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGFob28iLCJhIjoiMjktOC1BRSJ9.p1-4SJAU0qBT4jYZHF3sHQ', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18
     }).addTo(map)
