@@ -14,7 +14,7 @@ $(document).ready ->
         icon: 'flag-checkered',
         markerColor: 'red'
       })
-      #map.setView(json.center, 12)
+
       len = json.points_list.length
       if len > 1
         line = L.polyline(json.points_list, {color: 'red'}).addTo(map)
@@ -27,7 +27,7 @@ $(document).ready ->
           ends.push marker
           marker.enableEdit()
       map.fitBounds(line.getBounds())
-      line.enableEdit()#.editor.continueForward()
+      line.enableEdit()
 
     getTrack = (evt) ->
       track_point_lat_lngs = line.getLatLngs()
@@ -89,7 +89,7 @@ $(document).ready ->
         icon: 'bicycle',
         markerColor: 'green'
       })
-      starts.push map.editTools.startMarker(null, {icon: startMarker});
+      starts.push map.editTools.startMarker(null, {icon: startMarker})
       console.log starts
 
     addEnd = ->
@@ -97,7 +97,7 @@ $(document).ready ->
         icon: 'flag-checkered',
         markerColor: 'red'
       })
-      ends.push map.editTools.startMarker(null, {icon: endMarker});
+      ends.push map.editTools.startMarker(null, {icon: endMarker})
       console.log ends
 
     continueTrack = ->
@@ -108,9 +108,9 @@ $(document).ready ->
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18
     }).addTo(map)
-    #map.editTools.startPolyline(null, {color: 'red'});
-    map.addControl(new L.NewStartControl());
-    map.addControl(new L.NewEndControl());
+
+    map.addControl(new L.NewStartControl())
+    map.addControl(new L.NewEndControl())
 
     id = $('#track-id').text()
 

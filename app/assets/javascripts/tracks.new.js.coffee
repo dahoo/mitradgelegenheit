@@ -117,7 +117,7 @@ addStart = ->
     text: String(starts.length + 1)
     markerColor: 'green'
   })
-  starts.push map.editTools.startMarker(null, {icon: startMarker});
+  starts.push map.editTools.startMarker(null, {icon: startMarker})
   if starts.length > 1
     addField($('#starts .add_fields'))
 
@@ -126,7 +126,7 @@ addEnd = ->
     text: String(ends.length + 1)
     markerColor: 'red'
   })
-  ends.push map.editTools.startMarker(null, {icon: endMarker});
+  ends.push map.editTools.startMarker(null, {icon: endMarker})
   if ends.length > 1
     addField($('#ends .add_fields'))
 
@@ -152,10 +152,10 @@ getTrack = (evt) ->
     $('#ends .track_ends_longitude input').eq(i).val(p.lng)
 
 check_to_hide_or_show_remove_link = ->
-    if $('#start_times .nested-fields').length < 2
-      $('#start_times .remove_fields').hide()
-    else
-      $('#start_times .remove_fields').show()
+  if $('#start_times .nested-fields').length < 2
+    $('#start_times .remove_fields').hide()
+  else
+    $('#start_times .remove_fields').show()
 
 $(document).ready ->
   if($('#map-create-track').length > 0)
@@ -166,7 +166,7 @@ $(document).ready ->
     }).addTo(map)
     window.addLocateTo(map)
 
-    track = map.editTools.startPolyline(null, {color: 'red'});
+    track = map.editTools.startPolyline(null, {color: 'red'})
 
     L.easyButton('fa-road',
      continueTrack,

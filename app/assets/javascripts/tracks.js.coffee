@@ -68,7 +68,7 @@ newcontent_underscord = (id) ->
   '_' + id + '_$1'
 
 window.check_to_hide_or_show_remove_link = ->
-    if $('#start_times .nested-fields').length < 2
-      $('#start_times .remove_fields').hide()
-    else
-      $('#start_times .remove_fields').show()
+  if $('#start_times .nested-fields').length < 2
+    $('#start_times .remove_fields').hide()
+  else
+    $('#start_times .remove_fields').show()

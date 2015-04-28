@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 drawTracks = (map, json) ->
   startMarker = L.AwesomeMarkers.icon({
     icon: 'bicycle',
@@ -11,6 +7,7 @@ drawTracks = (map, json) ->
     icon: 'flag-checkered',
     markerColor: 'red'
   })
+
   global_layer = L.featureGroup()
   for track in json
     len = track.points_list.length
@@ -26,13 +23,14 @@ drawTracks = (map, json) ->
       "<div class='lead'>#{track.name}</div><a class='btn btn-primary btn-xs btn-block' href='tracks/#{track.id}'>Details</a>").click(->
       location.href = $(this).data('url')
       )[0]
+
     global_layer.addLayer (L.featureGroup(layer_arr)
       .bindPopup(link)
       .addTo(map))
 
     L.featureGroup(layer_arr).on
-        mouseover: highlightTrack,
-        mouseout: resetHighlight,
+      mouseover: highlightTrack,
+      mouseout: resetHighlight,
 
   map.fitBounds(global_layer.getBounds(), {padding: [0, 20]})
 
