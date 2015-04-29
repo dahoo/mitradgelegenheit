@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'puma'
 
 gem 'newrelic_rpm'
+gem 'new_relic_ping'
 
 gem 'leaflet-rails'
 gem 'geocoder'

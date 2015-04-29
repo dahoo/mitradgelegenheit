@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :tracks
 
   root 'home#index'
+
+  mount NewRelicPing::Engine => '/status'
 end
