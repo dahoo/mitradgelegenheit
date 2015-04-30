@@ -59,6 +59,9 @@ common: &default_settings
   # log level here.
   log_level: info
 
+  rules:
+    ignore_url_regexes: ["^/status"]
+
   # Optionally set the path to the log file This is expanded from the
   # root directory (may be relative or absolute, e.g. 'log/' or
   # '/var/log/') The agent will attempt to create this directory if it
