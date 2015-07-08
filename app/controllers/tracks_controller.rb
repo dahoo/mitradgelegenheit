@@ -1,7 +1,7 @@
 class TracksController < ApplicationController
   # include TracksHelper
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /tracks
   # GET /tracks.json
@@ -30,6 +30,7 @@ class TracksController < ApplicationController
   # POST /tracks.json
   def create
     @track = Track.new(track_params)
+    @track.user = current_user
 
     respond_to do |format|
       if !params[:track][:points].blank? && @track.save

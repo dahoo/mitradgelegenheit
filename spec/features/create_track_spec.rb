@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Track creation', type: :feature do
-  let(:admin) { FactoryGirl.create :admin }
+  let(:user) { FactoryGirl.create :user }
   let(:date) { Date.today + 2.years }
   before { page.driver.block_unknown_urls }
 
   scenario 'User creates a new repeating track', :js => true do
-    login_as(admin, :scope => :admin)
+    login_as(user, :scope => :user)
 
     visit '/tracks/new'
 
@@ -21,7 +21,7 @@ RSpec.feature 'Track creation', type: :feature do
   end
 
   scenario 'User creates a new track with date', :js => true do
-    login_as(admin, :scope => :admin)
+    login_as(user, :scope => :user)
 
     visit '/tracks/new'
 

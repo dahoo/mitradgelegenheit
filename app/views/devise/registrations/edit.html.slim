@@ -1,0 +1,21 @@
+.row
+  .col-md-6.col-md-offset-3
+    .tile
+      h1 Angaben ändern
+
+      = simple_form_for(resource, as: resource_name, url: send("#{resource_name}_registration_path", resource, html: {class: 'vertical-form'}), html: { method: :patch }) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, required: true, autofocus: true
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            p
+              | Currently waiting confirmation for: #{resource.unconfirmed_email}
+          = f.input :name, required: true
+          = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
+          = f.input :password_confirmation, required: false
+          = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+        .form-actions
+          = f.button :submit, "Update"
+
+      div
+        = link_to "Cancel my account", send("#{resource_name}_registration_path", resource), data: { confirm: "Are you sure?" }, method: :delete, class: 'text-danger'}
