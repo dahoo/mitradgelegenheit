@@ -202,13 +202,13 @@ RSpec.describe TracksController, type: :controller do
           it 'updates the requested track' do
             put :update, {id: valid_track.to_param, track: new_attributes}
             valid_track.reload
-            expect(assigns(:track).name).to eq(valid_track.name)
+            expect(valid_track.name).to eq(new_attributes[:name])
           end
 
           it "updates the requested track's distance" do
             put :update, {id: valid_track.to_param, track: new_attributes}
             valid_track.reload
-            expect(assigns(:track).distance).to be_within(0.1).of(4)
+            expect(valid_track.distance).to be_within(0.1).of(4)
           end
 
           it 'assigns the requested track as @track' do
@@ -245,8 +245,7 @@ RSpec.describe TracksController, type: :controller do
 
           it 'updates the requested track' do
             put :update, {id: valid_track.to_param, track: new_attributes}
-            valid_track.reload
-            expect(assigns(:track).name).to redirect_to root_path
+            expect(response).to redirect_to root_path
           end
         end
       end
@@ -264,7 +263,7 @@ RSpec.describe TracksController, type: :controller do
         it 'updates the requested track' do
           put :update, {id: valid_track.to_param, track: new_attributes}
           valid_track.reload
-          expect(assigns(:track).name).to eq(valid_track.name)
+          expect(valid_track.name).to eq(new_attributes[:name])
         end
 
         it 'redirects to the track' do
