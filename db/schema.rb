@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708211520) do
+ActiveRecord::Schema.define(version: 20150709100429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150708211520) do
     t.integer  "time",        default: 0
   end
 
+  add_index "way_points", ["id", "type"], name: "index_way_points_on_id_and_type", using: :btree
   add_index "way_points", ["track_id"], name: "index_way_points_on_track_id", using: :btree
 
 end
