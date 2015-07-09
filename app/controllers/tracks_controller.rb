@@ -81,7 +81,7 @@ class TracksController < ApplicationController
 
   def ensure_edit_right
     unless @track.user_id == current_user.id || current_user.admin?
-      redirect_to root_path, error: 'Aktion nicht erlaubt.'
+      redirect_to root_path, flash: { error: 'Aktion nicht erlaubt.' }
     end
   end
 
