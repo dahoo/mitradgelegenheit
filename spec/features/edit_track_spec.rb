@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Track editing', type: :feature do
   let(:user) { FactoryGirl.create :user }
-  let(:track) { FactoryGirl.create :track }
-  let(:track_with_date) { FactoryGirl.create :track_with_date }
+  let(:track) { FactoryGirl.create :track, user: user }
+  let(:track_with_date) { FactoryGirl.create :track_with_date, user: user }
   let(:date) { Date.today + 2.years }
   before { page.driver.block_unknown_urls }
 

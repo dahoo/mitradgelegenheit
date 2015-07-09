@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Track, type: :model do
-  let(:track) { FactoryGirl.create :track }
+  let(:user) { FactoryGirl.create :user }
+  let(:track) { FactoryGirl.create :track, user: user }
 
   it 'assigns a color index after creation' do
     expect(track.color_index).to be_kind_of Integer
@@ -12,8 +13,8 @@ RSpec.describe Track, type: :model do
   end
 
   describe 'scope active' do
-    let!(:track_with_date) { FactoryGirl.create :track_with_date }
-    let!(:track_with_passed_date) { FactoryGirl.create :track_with_passed_date }
+    let!(:track_with_date) { FactoryGirl.create :track_with_date, user: user }
+    let!(:track_with_passed_date) { FactoryGirl.create :track_with_passed_date, user: user }
 
     before do
       track
