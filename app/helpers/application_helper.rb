@@ -20,4 +20,12 @@ module ApplicationHelper
   def title(page_title)
     content_for(:title) { page_title }
   end
+
+  def current_user_id
+    current_user.id if current_user
+  end
+
+  def admin_signed_in?
+    current_user && current_user.admin?
+  end
 end

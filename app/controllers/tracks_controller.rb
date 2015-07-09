@@ -1,7 +1,8 @@
 class TracksController < ApplicationController
   # include TracksHelper
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_edit_right, only: [:edit, :update, :destroy]
 
   # GET /tracks
   # GET /tracks.json
@@ -30,6 +31,7 @@ class TracksController < ApplicationController
   # POST /tracks.json
   def create
     @track = Track.new(track_params)
+    @track.user = current_user
 
     respond_to do |format|
       if !params[:track][:points].blank? && @track.save
@@ -75,6 +77,12 @@ class TracksController < ApplicationController
 
   def set_track
     @track = Track.find(params[:id])
+  end
+
+  def ensure_edit_right
+    unless @track.user_id == current_user.id || current_user.admin?
+      redirect_to root_path, error: 'Aktion nicht erlaubt.'
+    end
   end
 
   def track_params

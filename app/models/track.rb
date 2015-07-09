@@ -1,4 +1,5 @@
 class Track < ActiveRecord::Base
+  belongs_to :user
   has_many :track_points, dependent: :destroy, autosave: true
   has_many :starts, dependent: :destroy, autosave: true
   has_many :ends, dependent: :destroy, autosave: true

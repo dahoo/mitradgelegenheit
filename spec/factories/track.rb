@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :track do
     name 'Mitradgelegenheit'
+    user
     start_times { FactoryGirl.create_list(:start_time, 3) }
     track_points do
       [FactoryGirl.create(:track_point),
@@ -40,6 +41,10 @@ FactoryGirl.define do
 
     factory :track_with_passed_date do
       start_times { [FactoryGirl.create(:start_time_with_passed_date)] }
+    end
+
+    trait :other_user do
+      association :user, factory: :user_2
     end
   end
 end

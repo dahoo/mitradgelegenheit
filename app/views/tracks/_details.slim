@@ -1,26 +1,26 @@
 .hidden#track-id
-  = @track.id
+  = track.id
 ul.icon-list
   li.track-detail
     .icon-list-icon.no-list-group
       i.fa.fa-clock-o.fa-2x
     .icon-list-description
-      - @track.start_times.active.each do |start_time|
+      - track.start_times.active.each do |start_time|
         div
           = "#{start_time.day}, #{start_time.time_h_m }"
   li.track-detail
     .icon-list-icon.no-list-group
       i.fa.fa-long-arrow-right.fa-2x
     .icon-list-description
-      = "#{number_with_precision @track.distance, locale: I18n.locale, precision: 1} km"
-  - unless @track.link.blank?
+      = "#{number_with_precision track.distance, locale: I18n.locale, precision: 1} km"
+  - unless track.link.blank?
     li.track-detail
       .icon-list-icon.no-list-group
         i.fa.fa-external-link.fa-2x
       .icon-list-description
-        = link_to 'Event', @track.link, target: '_blank'
+        = link_to 'Event', track.link, target: '_blank'
 ul.icon-list.list-group
-  - @track.starts.order(:time).each do |start|
+  - track.starts.order(:time).each do |start|
     li.list-group-item
       .icon-list-icon
         i.fa.fa-bicycle.fa-2x
@@ -28,7 +28,7 @@ ul.icon-list.list-group
       .icon-list-description
         = start.description
 ul.icon-list.list-group
-  - @track.ends.order(:time).each do |end_|
+  - track.ends.order(:time).each do |end_|
     li.list-group-item
       .icon-list-icon
         i.fa.fa-flag-checkered.fa-2x
@@ -36,7 +36,7 @@ ul.icon-list.list-group
       .icon-list-description
         = end_.description
 
-- if admin_signed_in?
+- if admin_signed_in? || current_user == track.user
   .btn-group
-    = link_to 'Ändern', edit_track_path(@track), class: 'btn'
-    = link_to 'Löschen', track_path(@track), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'
+    = link_to 'Ändern', edit_track_path(track), class: 'btn'
+    = link_to 'Löschen', track_path(track), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'

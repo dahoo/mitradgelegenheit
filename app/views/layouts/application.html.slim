@@ -30,22 +30,24 @@ html
           ul.nav.navbar-nav
             li class="#{'active' if current_page? root_path}"
               = link_to 'Alle Strecken', root_path
-            - if admin_signed_in?
-              li class="#{'active' if current_page? new_track_path}"
-                = link_to 'Neue Strecke anlegen', new_track_path
+            li class="#{'active' if current_page? new_track_path}"
+              = link_to 'Neue Strecke anlegen', new_track_path
           ul.nav.navbar-nav.navbar-right
             li
               a href='https://www.facebook.com/mitradgelegenheit'
                 i.fa.fa-facebook
             li class="#{'active' if current_page? static_about_path}"
               = link_to 'Über uns', static_about_path
-            - if admin_signed_in?
-              li class="#{'active' if current_page? edit_admin_registration_path}"
-                = link_to edit_admin_registration_path
+            - if user_signed_in?
+              li class="#{'active' if current_page? edit_user_registration_path}"
+                = link_to edit_user_registration_path
                   i.fa.fa-user
               li
-                = link_to destroy_admin_session_path, method: :delete
+                = link_to destroy_user_session_path, method: :delete
                   i.fa.fa-sign-out
+            - else
+              li class="#{'active' if current_page? new_user_session_path}"
+                = link_to 'Anmelden', new_user_session_path
 
     - if controller_name == 'static' or controller_name == 'sessions'
       #wrapper.container

@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature 'Track editing', type: :feature do
-  let(:admin) { FactoryGirl.create :admin }
-  let(:track) { FactoryGirl.create :track }
-  let(:track_with_date) { FactoryGirl.create :track_with_date }
+  let(:user) { FactoryGirl.create :user }
+  let(:track) { FactoryGirl.create :track, user: user }
+  let(:track_with_date) { FactoryGirl.create :track_with_date, user: user }
   let(:date) { Date.today + 2.years }
   before { page.driver.block_unknown_urls }
 
   scenario 'User changes day of week', :js => true do
-    login_as(admin, :scope => :admin)
+    login_as(user, :scope => :user)
 
     visit "/tracks/#{track.id}/edit"
 
@@ -24,7 +24,7 @@ RSpec.feature 'Track editing', type: :feature do
   end
 
   scenario 'User changes day of week to date', :js => true do
-    login_as(admin, :scope => :admin)
+    login_as(user, :scope => :user)
 
     visit "/tracks/#{track.id}/edit"
 
@@ -46,7 +46,7 @@ RSpec.feature 'Track editing', type: :feature do
   end
 
   scenario 'User changes a date to day of week', :js => true do
-    login_as(admin, :scope => :admin)
+    login_as(user, :scope => :user)
 
     visit "/tracks/#{track_with_date.id}/edit"
 
