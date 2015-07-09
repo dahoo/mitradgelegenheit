@@ -1,3 +1,4 @@
+small= "erstellt #{"von #{@track.user.name}" if @track.user} #{time_ago_in_words @track.created_at}"
 .hidden#track-id
   = track.id
 ul.icon-list

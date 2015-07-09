@@ -2,8 +2,6 @@
 .row
   #side-bar.col-md-3
     h1 = yield :title
-    - if @track.user
-      small= "von #{@track.user.name}"
     = render 'details', track: @track
   .col-md-9#map-col
     .map#map-show-track
