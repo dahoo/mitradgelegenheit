@@ -3,7 +3,7 @@
     .tile
       h1 Angaben ändern
 
-      = simple_form_for(resource, as: resource_name, url: send("#{resource_name}_registration_path", resource, html: {class: 'vertical-form'}), html: { method: :patch }) do |f|
+      = simple_form_for(resource, as: resource_name, url: send("#{resource_name}_registration_path"), html: { method: :patch, class: 'vertical-form' }) do |f|
         = f.error_notification
         .form-inputs
           = f.input :email, required: true, autofocus: true
@@ -18,4 +18,4 @@
           = f.button :submit, "Update"
 
       div
-        = link_to "Cancel my account", send("#{resource_name}_registration_path", resource), data: { confirm: "Are you sure?" }, method: :delete, class: 'text-danger'}
+        = link_to "Cancel my account", send("#{resource_name}_registration_path", resource), data: { confirm: "Are you sure?" }, method: :delete, class: 'text-danger'
