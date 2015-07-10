@@ -50,47 +50,13 @@ $(document).ready ->
         $('#ends .track_ends_latitude input').eq(i).val(p.lat)
         $('#ends .track_ends_longitude input').eq(i).val(p.lng)
 
-    L.NewStartControl = L.Control.extend(
-      options:
-        position: "topleft"
-
-      onAdd: (map) ->
-        container = L.DomUtil.create("div", "leaflet-control leaflet-bar")
-        link = L.DomUtil.create("a", "", container)
-        link.href = "#"
-        link.title = 'Neuen Startpunkt hinzufügen'
-        link.innerHTML = 'S'
-        L.DomEvent.on(link, "click", L.DomEvent.stop).on link, "click", ->
-          addStart()
-          return
-
-        container
-    )
-
-    L.NewEndControl = L.Control.extend(
-      options:
-        position: "topleft"
-
-      onAdd: (map) ->
-        container = L.DomUtil.create("div", "leaflet-control leaflet-bar")
-        link = L.DomUtil.create("a", "", container)
-        link.href = "#"
-        link.title = 'Neuen Endpunkt hinzufügen'
-        link.innerHTML = 'E'
-        L.DomEvent.on(link, "click", L.DomEvent.stop).on link, "click", ->
-          addEnd()
-          return
-
-        container
-    )
-
     addStart = ->
       startMarker = L.AwesomeMarkers.icon({
         icon: 'bicycle',
         markerColor: 'green'
       })
       starts.push map.editTools.startMarker(null, {icon: startMarker})
-      console.log starts
+      addField($('#starts .add_fields'))
 
     addEnd = ->
       endMarker = L.AwesomeMarkers.icon({
@@ -98,7 +64,7 @@ $(document).ready ->
         markerColor: 'red'
       })
       ends.push map.editTools.startMarker(null, {icon: endMarker})
-      console.log ends
+      addField($('#ends .add_fields'))
 
     continueTrack = ->
       track.editor.continueForward()
@@ -108,9 +74,6 @@ $(document).ready ->
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18
     }).addTo(map)
-
-    map.addControl(new L.NewStartControl())
-    map.addControl(new L.NewEndControl())
 
     id = $('#track-id').text()
 
