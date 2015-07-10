@@ -6,5 +6,26 @@ body.home_controller {
   #wrapper.container-fluid {
     padding: 0px
   }
+
+  #wrapper {
+    position: relative;
+  }
+
+  #over_map {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    width: 70%;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  body.home_controller #over_map{
+    left: 0px;
+    width: 100%;
+  }
 }
 
