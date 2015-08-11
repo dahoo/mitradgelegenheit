@@ -59,3 +59,9 @@ $(document).ready ->
 
     $.get('/tracks.json?with_points=true').done (json) ->
       drawTracks(map, json)
+
+    if Cookies.get 'hideWelcome'
+      $('#over_map').hide()
+    else
+      $('#over_map .close').click ->
+        Cookies.set 'hideWelcome', true
