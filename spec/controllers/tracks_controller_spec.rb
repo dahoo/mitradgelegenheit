@@ -19,6 +19,7 @@ RSpec.describe TracksController, type: :controller do
       track: {
         name: 'Name',
         link: '',
+        category: 'other',
         start_times_attributes: {
           '1425126589432' => {
             is_repeated: is_repeated,

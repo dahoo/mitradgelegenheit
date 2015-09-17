@@ -86,8 +86,8 @@ class TracksController < ApplicationController
   end
 
   def track_params
-    params.require(:track).permit(:name, :distance, :time, :link,
-      start_times_attributes: [:id, :is_repeated, :day_of_week, :date, :time, :_destroy],
+    params.require(:track).permit(:name, :distance, :time, :link, :category,
+      start_times_attributes: [:id, :is_repeated, :every, :day_of_week, :date, :time, :_destroy],
       starts_attributes: [:id, :description, :time, :latitude, :longitude, :_destroy],
       ends_attributes: [:id, :description, :time, :latitude, :longitude, :_destroy])
   end
