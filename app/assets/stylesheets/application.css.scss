@@ -130,6 +130,10 @@ input.error {
 }
 
 .alert {
+  border-radius: 0px;
+  margin-bottom: 0px;
+  border: none;
+
   &.alert-info  { background-color: $info }
   &.alert-danger   { background-color: $error }
   &.alert-warning   { background-color: $warning }
