@@ -8,4 +8,8 @@ module TracksHelper
     names.push names.shift
     names.map.with_index.to_a
   end
+
+  def track_categories
+    {'Arbeit/Schule/Uni' => 'commute', 'Freizeit' => 'leisure', 'Event' => 'event', 'Sonstiges' => 'other'}
+  end
 end

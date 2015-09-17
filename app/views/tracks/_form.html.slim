@@ -2,6 +2,11 @@
   = f.input :name, label: false, placeholder: 'Name', required: true, \
     input_html: {class: (@track.errors.include?(:name) ? 'error' : '')}
   = f.input :link, label: false, placeholder: 'Facebook-Event (optional)'
+  = f.input :category,
+    label: false,
+    collection: track_categories,
+    include_blank: false,
+    input_html: {class: 'form-control btn btn-inverse btn-sm'}
 
   #start_times
     h3 Startzeiten

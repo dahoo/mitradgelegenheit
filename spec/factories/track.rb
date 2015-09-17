@@ -10,6 +10,7 @@ FactoryGirl.define do
     end
     starts { [FactoryGirl.create(:start)] }
     ends   { [FactoryGirl.create(:end)] }
+    category 'other'
 
     factory :track_attributes do
       name 'Mitradgelegenheit'

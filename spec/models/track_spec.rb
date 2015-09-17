@@ -4,6 +4,10 @@ RSpec.describe Track, type: :model do
   let(:user) { FactoryGirl.create :user }
   let(:track) { FactoryGirl.create :track, user: user }
 
+  it 'validates the category' do
+    expect(track.update category: 'inexistent_category').to eq false
+  end
+
   it 'assigns a color index after creation' do
     expect(track.color_index).to be_kind_of Integer
   end

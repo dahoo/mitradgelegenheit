@@ -14,6 +14,7 @@ class Track < ActiveRecord::Base
   accepts_nested_attributes_for :ends
 
   validates :name, presence: true
+  validates :category, inclusion: { in: %w(commute leisure event other) }
 
   attr_reader :points
 

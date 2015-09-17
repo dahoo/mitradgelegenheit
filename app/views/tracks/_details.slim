@@ -14,6 +14,12 @@ ul.icon-list
       i.fa.fa-long-arrow-right.fa-2x
     .icon-list-description
       = "#{number_with_precision track.distance, locale: I18n.locale, precision: 1} km"
+  - unless track.category.blank?
+    li.track-detail
+      .icon-list-icon.no-list-group
+        i.fa.fa-tag.fa-2x
+      .icon-list-description
+        = track_categories.invert[track.category]
   - unless track.link.blank?
     li.track-detail
       .icon-list-icon.no-list-group
