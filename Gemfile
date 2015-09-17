@@ -48,6 +48,7 @@ gem 'rails-i18n'
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-uberspace', github: 'tessi/capistrano-uberspace'
 gem 'passenger', group: :production
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development do
   gem 'spring'
