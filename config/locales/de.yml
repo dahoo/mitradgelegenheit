@@ -214,3 +214,13 @@ de:
       track:
         one: Strecke
         other: Strecken
+
+  devise:
+    mailer:
+      reset_password_instructions:
+        hello: 'Hallo %{name}!'
+        text: 'Jemand hat einen Link zum Ändern deines Passwortes angefordert. Du kannst das mit dem folgenden Link machen.'
+        change_password: 'Mein Passwort ändern'
+        wasntyou: "Falls du dies nicht angefordert hast, ignoriere diese Mail bitte."
+        password_wont_change: "Dein Passwort wird nicht geändert bis du den Link aufrufst und ein neues festlegst."
+
