@@ -45,6 +45,10 @@ gem 'devise'
 gem 'tod'
 gem 'rails-i18n'
 
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-uberspace', github: 'tessi/capistrano-uberspace'
+gem 'passenger', group: :production
+
 group :development do
   gem 'spring'
   gem 'simplecov'

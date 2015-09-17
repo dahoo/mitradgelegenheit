@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/tessi/capistrano-uberspace.git
+  revision: 606ed1821168a2a1cf8e24aac7184eedab9fa2a1
+  specs:
+    capistrano-uberspace (1.0.2)
+      capistrano (~> 3.4.0)
+      capistrano-bundler
+      capistrano-rails
+      inifile (~> 3.0.0)
+      passenger (~> 5.0)
+      rack (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,6 +57,16 @@ GEM
     bootstrap-sass (3.3.0.1)
       sass (~> 3.2)
     builder (3.2.2)
+    capistrano (3.4.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.1.3)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -65,6 +87,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colorize (0.7.7)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     devise (3.4.1)
@@ -106,6 +129,7 @@ GEM
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.6.11)
+    inifile (3.0.0)
     jbuilder (2.2.4)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -129,6 +153,9 @@ GEM
     minitest (5.4.2)
     multi_json (1.10.1)
     nenv (0.2.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
     new_relic_ping (0.1.2)
       rails (>= 3.2)
     newrelic_rpm (3.11.1.284)
@@ -140,6 +167,9 @@ GEM
     orm_adapter (0.5.0)
     parser (2.2.0.3)
       ast (>= 1.1, < 3.0)
+    passenger (5.0.18)
+      rack
+      rake (>= 0.8.1)
     pg (0.17.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
@@ -249,6 +279,10 @@ GEM
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       polyamorous (~> 1.1.0)
+    sshkit (1.7.1)
+      colorize (>= 0.7.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     temple (0.6.9)
     thor (0.19.1)
     thread_safe (0.3.4)
@@ -277,6 +311,8 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3.0)
+  capistrano (~> 3.4.0)
+  capistrano-uberspace!
   capybara
   capybara-webkit
   cocoon
@@ -294,6 +330,7 @@ DEPENDENCIES
   libnotify
   new_relic_ping
   newrelic_rpm
+  passenger
   pg
   puma
   rails (= 4.1.6)
