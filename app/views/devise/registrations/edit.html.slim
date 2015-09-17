@@ -11,11 +11,11 @@
             p
               | Currently waiting confirmation for: #{resource.unconfirmed_email}
           = f.input :name, required: true
-          = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-          = f.input :password_confirmation, required: false
-          = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+          = f.input :password, autocomplete: "off", hint: "freilassen, wenn du es nicht ändern möchtest", required: false, label: 'Passwort'
+          = f.input :password_confirmation, required: false, label: 'Passwort bestätigen'
+          = f.input :current_password, hint: "Wir brauchen dein aktuelles Passwort um die Änderungen zu bestätigen.", required: true
         .form-actions
-          = f.button :submit, "Update"
+          = f.button :submit, "Ändern"
 
       div
-        = link_to "Cancel my account", send("#{resource_name}_registration_path", resource), data: { confirm: "Are you sure?" }, method: :delete, class: 'text-danger'
+        = link_to "Account löschen", send("#{resource_name}_registration_path", resource), data: { confirm: "Bist du dir sicher?" }, method: :delete, class: 'text-danger'
