@@ -8,7 +8,7 @@ ul.icon-list
     .icon-list-description
       - track.start_times.active.each do |start_time|
         div
-          = "#{start_time.day}, #{start_time.time_h_m }"
+          = start_time.to_s
   li.track-detail
     .icon-list-icon.no-list-group
       i.fa.fa-long-arrow-right.fa-2x

@@ -43,6 +43,7 @@ gem "cocoon"
 
 gem 'devise'
 gem 'tod'
+gem 'ice_cube'
 gem 'rails-i18n'
 
 gem 'capistrano', '~> 3.4.0'

@@ -19,6 +19,10 @@ body.home_controller {
     z-index: 1001;
     background: rgba(255, 255, 255, 0.8);
     padding: 20px;
+
+    .btn {
+      margin-right: 10px;
+    }
   }
 }
 

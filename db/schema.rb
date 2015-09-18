@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150916203723) do
     t.datetime "updated_at"
     t.date     "date"
     t.boolean  "is_repeated"
+    t.integer  "every",       default: 1
   end
 
   add_index "start_times", ["track_id"], name: "index_start_times_on_track_id", using: :btree

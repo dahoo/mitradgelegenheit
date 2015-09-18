@@ -133,6 +133,7 @@ GEM
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.6.11)
+    ice_cube (0.13.0)
     inifile (3.0.0)
     jbuilder (2.2.4)
       activesupport (>= 3.0.0, < 5)
@@ -329,6 +330,7 @@ DEPENDENCIES
   font-awesome-sass
   geocoder
   guard-rspec
+  ice_cube
   jbuilder (~> 2.0)
   jquery-rails
   leaflet-rails

@@ -62,4 +62,8 @@ class Track < ActiveRecord::Base
             index: i
     end
   end
+
+  def next_occurence
+    start_times.map(&:next_occurence).min
+  end
 end

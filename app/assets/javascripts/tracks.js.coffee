@@ -10,6 +10,7 @@ window.bind_wday_date_switch = (el, hide = false) ->
   el.find('input.switch_wday_date').on 'switchChange.bootstrapSwitch', (event, state) ->
     parent = $(this).closest '.track_start_times_start_time'
     parent.find('.wday_select').toggle()
+    parent.find('.every_select').toggle()
     parent.find('.date_select').toggle()
 
 window.addField = ($this) ->
