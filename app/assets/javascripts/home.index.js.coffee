@@ -51,7 +51,7 @@ resetHighlight = (e) ->
     opacity: 0.5,
     weight: 5
 
-window.filterTracks = (name, category) ->
+filterTracks = (name, category) ->
   tracks = window.json.filter (entry) ->
     (name == '' or entry.name.toLowerCase().indexOf(name.toLowerCase()) > -1) and
     (category == '' or entry.category == category)
@@ -88,10 +88,9 @@ $(document).ready ->
       L.DomEvent.on div, 'mousewheel', L.DomEvent.stopPropagation
     else
       L.DomEvent.disableClickPropagation div
-      #L.DomEvent.on div, 'click', L.DomEvent.stopPropagation
 
     $('#filter_btn').click ->
-      window.filterTracks($('#search_query_field').val(), $('#category_field  ').val())
+      filterTracks($('#search_query_field').val(), $('#category_field  ').val())
 
     $('#filter_reset_btn').click ->
       resetFilter()
