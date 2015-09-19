@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  include TracksHelper
+
   belongs_to :user
   has_many :track_points, dependent: :destroy, autosave: true
   has_many :starts, dependent: :destroy, autosave: true
@@ -13,8 +15,12 @@ class Track < ActiveRecord::Base
   accepts_nested_attributes_for :starts
   accepts_nested_attributes_for :ends
 
+  def self.categories
+    %w(commute leisure event other)
+  end
+
   validates :name, presence: true
-  validates :category, inclusion: { in: %w(commute leisure event other) }
+  validates :category, inclusion: { in: Track.categories }
 
   attr_reader :points
 
@@ -65,5 +71,9 @@ class Track < ActiveRecord::Base
 
   def next_occurence
     start_times.map(&:next_occurence).min
+  end
+
+  def self.options_for_category
+    track_categories
   end
 end

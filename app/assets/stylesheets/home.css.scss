@@ -11,17 +11,27 @@ body.home_controller {
     position: relative;
   }
 
-  #over_map {
+  .over_map {
     position: absolute;
-    bottom: 10px;
-    left: 50px;
-    width: 70%;
     z-index: 1001;
     background: rgba(255, 255, 255, 0.8);
     padding: 20px;
+  }
 
+  #explanation {
     .btn {
       margin-right: 10px;
+      bottom: 10px;
+      left: 50px;
+      width: 70%;
+    }
+  }
+
+  #filter {
+    right: 0px;
+
+    .btn-group {
+      margin-top: 10px;
     }
   }
 }
