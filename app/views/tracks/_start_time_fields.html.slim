@@ -5,17 +5,17 @@
     = f.input :is_repeated, as: :boolean, input_html: {'data-off-text' => "<i class='fa fa-calendar'></i>", 'data-on-text' => "<i class='fa fa-repeat'></i>", class: 'switch_wday_date'}, label: false
     = f.input :every, collection: every_names, label: false,
       include_blank: false,
-      input_html: {class: 'form-control btn btn-inverse btn-sm'},
+      input_html: {class: 'form-control'},
       wrapper_html: {class: 'every_select mrs', style: "#{'display:none' unless f.object.is_repeated}"}
     = f.input :day_of_week, collection: days_of_week_names, label: false,
       include_blank: false,
-      input_html: {class: 'form-control btn btn-inverse btn-sm'},
+      input_html: {class: 'form-control'},
       wrapper_html: {class: 'wday_select mrs', style: "#{'display:none' unless f.object.is_repeated}"}
     = f.input :date, as: :date, label: false,
-      input_html: {class: 'form-control btn btn-default btn-sm'},
+      input_html: {class: 'form-control select'},
       wrapper_html: {class: 'date_select', style: "#{'display:none' if f.object.is_repeated}"}
     = f.input :time, required: true, label: false,\
-        input_html: {class: 'form-control btn', style: 'width:initial;display:inline;'},
+        input_html: {class: 'form-control select', style: 'width:initial;display:inline;'},
         wrapper_html: {style: 'display:inline;'}
 
     = link_to_remove_association f, class: 'btn btn-danger btn-sm mls' do

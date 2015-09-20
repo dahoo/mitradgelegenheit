@@ -12,8 +12,8 @@
  *
  *= require leaflet
  *= require font-awesome
- *= require_self
  *= require_tree
+ *= require_self
  *
  *= depend_on_asset "layers.png"
  *= depend_on_asset "layers-2x.png"
@@ -39,6 +39,11 @@ $navbar-default-link-active-bg: white;
 $navbar-default-link-active-bg: white;
 $navbar-default-link-active-color: #2980B9;
 $navbar-default-link-hover-color: #27AE60;
+
+$input-color: #34495e;
+$input-focus-color: #1abc9c;
+$input-border: #dce4ec;
+$input-border-radius: 6px;
 
 $error: #E74C3C;
 $info: #2980b9;
@@ -223,4 +228,21 @@ ul.icon-list {
 
 .tile form p {
   margin-bottom: initial;
+}
+
+select.select {
+  border: 2px solid $input-border;
+  border-radius: $input-border-radius;
+  box-shadow: none;
+  font-family: "Lato", sans-serif;
+  color: $input-color;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  padding-left: 10px;
+  height: 38px;
+
+  &:focus {
+    border: 2px solid $input-focus-color;
+    box-shadow: none;
+  }
 }

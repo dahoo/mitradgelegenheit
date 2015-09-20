@@ -9,7 +9,7 @@
                   options_from_collection_for_select(track_categories, 'second', 'first'),
                   id: 'category_field',
                   include_blank: '- Any -',
-                  class: 'form-control btn btn-inverse btn-sm')
+                  class: 'form-control select')
     .btn-group
       = link_to 'Filtern', '#', class: 'btn btn-primary btn-lg', role: "button", id: 'filter_btn'
       = link_to 'Zurücksetzen', '#', class: 'btn btn-lg', role: "button", id: 'filter_reset_btn'
