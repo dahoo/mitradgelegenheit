@@ -77,9 +77,9 @@ $(document).ready ->
       drawTracks(json)
 
     if Cookies.get 'hideWelcome'
-      $('#over_map').hide()
+      $('#explanation').hide()
     else
-      $('#over_map .close').click ->
+      $('#explanation .close').click ->
         Cookies.set 'hideWelcome', true
 
     div = L.DomUtil.get('filter')
