@@ -72,6 +72,13 @@ $(document).ready ->
     }).addTo(window.map)
     window.addLocateTo(window.map)
 
+    new (L.Control.GeoSearch)(
+      provider: new (L.GeoSearch.Provider.OpenStreetMap)(viewbox: '13.0882097323,52.3418234221,13.7606105539,52.6697240587')
+      enableAutocomplete: true
+      autocompleteMinQueryLen: 5
+      searchLabel: 'Nach Adresse suchen'
+      notFoundMessage: 'Diese Adresse konnte nicht gefunden werden.').addTo window.map
+
     $.get('/tracks.json?with_points=true').done (json) ->
       window.json = json
       drawTracks(json)
