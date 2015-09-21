@@ -49,11 +49,11 @@ html lang='de'
               li class="#{'active' if current_page? new_user_session_path}"
                 = link_to 'Anmelden', new_user_session_path
 
+    = flash_messages
+
     - if controller_name == 'static' or controller_name == 'sessions'
       #wrapper.container
-        = flash_messages
         = yield
     - else
       #wrapper.container-fluid
-        = flash_messages
         = yield
