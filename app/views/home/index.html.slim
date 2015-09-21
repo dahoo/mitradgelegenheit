@@ -1,18 +1,24 @@
 .map#map-all-tracks
   #filter.over_map.hidden-xs
-    div
-      = label_tag 'search_query', 'Name'
-      = text_field_tag :search_query, nil, id: 'search_query_field', class: 'form-control'
-    div
-      = label_tag 'category', 'Kategorie'
-      = select_tag(:category,
-                  options_from_collection_for_select(track_categories, 'second', 'first'),
-                  id: 'category_field',
-                  include_blank: '- Any -',
-                  class: 'form-control select')
-    .btn-group
-      = link_to 'Filtern', '#', class: 'btn btn-primary btn-lg', role: "button", id: 'filter_btn'
-      = link_to 'Zurücksetzen', '#', class: 'btn btn-lg', role: "button", id: 'filter_reset_btn'
+    .panel.panel-primary
+      .panel-heading
+        h3.panel-title Filtern
+        span.pull-right.clickable data-toggle="collapse" data-parent="#filter" href="#filter-collapse" aria-expanded="true" aria-controls="filter-collapse"
+          i.glyphicon.glyphicon-chevron-up
+      .panel-body#filter-collapse.collapse.in
+        div
+          = label_tag 'search_query', 'Name'
+          = text_field_tag :search_query, nil, id: 'search_query_field', class: 'form-control'
+        div
+          = label_tag 'category', 'Kategorie'
+          = select_tag(:category,
+                      options_from_collection_for_select(track_categories, 'second', 'first'),
+                      id: 'category_field',
+                      include_blank: '- Any -',
+                      class: 'form-control select')
+        .btn-group
+          = link_to 'Filtern', '#', class: 'btn btn-primary btn-lg', role: "button", id: 'filter_btn'
+          = link_to 'Zurücksetzen', '#', class: 'btn btn-lg', role: "button", id: 'filter_reset_btn'
 
 - unless user_signed_in?
   #explanation.over_map.jumbotron.collapse.in

@@ -50,6 +50,8 @@ $info: #2980b9;
 $success: #27ae60;
 $warning: #f1c40f;
 
+$panel-primary-color: #1abc9c;
+
 body {
   padding-top: 51px;
 }
@@ -246,3 +248,22 @@ select.select {
     box-shadow: none;
   }
 }
+
+.panel-primary {
+  border-color: $panel-primary-color;
+
+  .panel-heading {
+    background-color: $panel-primary-color;
+    border-color: $panel-primary-color;
+  }
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.panel-heading span {
+	margin-top: -17px;
+	font-size: 15px;
+}
+

@@ -101,3 +101,9 @@ $(document).ready ->
 
     $('#filter_reset_btn').click ->
       resetFilter()
+
+    $('#filter-collapse').on 'show.bs.collapse', ->
+      $('#filter').find('.panel-heading i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up')
+
+    $('#filter-collapse').on 'hide.bs.collapse', ->
+      $('#filter').find('.panel-heading i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down')

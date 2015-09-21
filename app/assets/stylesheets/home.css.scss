@@ -14,7 +14,6 @@ body.home_controller {
   .over_map {
     position: absolute;
     z-index: 1001;
-    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
   }
 
@@ -29,6 +28,11 @@ body.home_controller {
 
   #filter {
     right: 0px;
+    width: 290px;
+
+    panel {
+      width: 250px;
+    }
 
     .btn-group {
       margin-top: 10px;
@@ -42,4 +46,3 @@ body.home_controller {
     width: 100%;
   }
 }
-
