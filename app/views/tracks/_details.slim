@@ -43,7 +43,14 @@ ul.icon-list.list-group
       .icon-list-description
         = end_.description
 
-- if admin_signed_in? || (user_signed_in? && current_user == track.user)
-  .btn-group
-    = link_to 'Ändern', edit_track_path(track), class: 'btn'
-    = link_to 'Löschen', track_path(track), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'
+.btn-group
+  = link_to track_path(track, format: :gpx), class: 'btn btn-default'
+    i.fa.fa-download.mr10
+    |GPX
+  - if admin_signed_in? || (user_signed_in? && current_user == track.user)
+    = link_to edit_track_path(track), class: 'btn btn-default'
+      i.fa.fa-edit.mr10
+      |Ändern
+    = link_to track_path(track), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'
+      i.fa.fa-trash.mr10
+      |Löschen

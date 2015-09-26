@@ -16,6 +16,11 @@ class TracksController < ApplicationController
   # GET /tracks/1
   # GET /tracks/1.json
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render :show }
+      format.gpx { send_data @track.to_gpx, filename: sanitize_filename("#{@track.name}.gpx") }
+     end
   end
 
   # GET /tracks/new

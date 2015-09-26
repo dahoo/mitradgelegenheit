@@ -30,6 +30,7 @@ gem 'new_relic_ping'
 
 gem 'leaflet-rails'
 gem 'geocoder'
+gem 'gpx'
 
 gem 'slim'
 gem 'font-awesome-sass'
@@ -39,7 +40,7 @@ gem 'autoprefixer-rails'
 gem 'active_link_to'
 gem 'simple_form'
 gem 'flat-ui-rails'
-gem "cocoon"
+gem 'cocoon'
 
 gem 'devise'
 gem 'tod'

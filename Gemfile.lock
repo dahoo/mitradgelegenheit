@@ -116,6 +116,9 @@ GEM
       sass (~> 3.2)
     formatador (0.2.5)
     geocoder (1.2.8)
+    gpx (0.8.2)
+      nokogiri
+      rake
     guard (2.12.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -329,6 +332,7 @@ DEPENDENCIES
   flat-ui-rails
   font-awesome-sass
   geocoder
+  gpx
   guard-rspec
   ice_cube
   jbuilder (~> 2.0)
