@@ -6,7 +6,7 @@
       = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-vertical' }  do |f|
           = f.input :email, required: true, autofocus: true, placeholder: 'Email', label: false
           = f.input :password, required: true, placeholder: 'Passwort', label: false
-          = f.input :remember_me, as: :boolean, input_html: {data: {toggle: 'checkbox'}} if devise_mapping.rememberable?
+          = f.input :remember_me, as: :boolean, label: 'Speichern', input_html: {data: {toggle: 'checkbox'}} if devise_mapping.rememberable?
 
           = f.button :submit, "Anmelden"
 
