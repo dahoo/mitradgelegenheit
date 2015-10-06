@@ -7,13 +7,13 @@ FactoryGirl.define do
 
     factory :start_time_with_date do
       day_of_week nil
-      date 2.day.from_now
+      date 2.days.from_now
       is_repeated false
     end
 
     factory :start_time_with_passed_date do
       day_of_week nil
-      date 2.day.ago
+      date 2.days.ago
       is_repeated false
     end
   end

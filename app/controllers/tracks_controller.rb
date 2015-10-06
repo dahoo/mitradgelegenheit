@@ -42,6 +42,8 @@ class TracksController < ApplicationController
       if !params[:track][:points].blank? && @track.save
         @track.add_track_points(params[:track][:points])
 
+        NotificationMailer.send_new_track(@track)
+
         format.html { redirect_to @track, notice: 'Strecke wurde erfolgreich erstellt!' }
         format.json { render :show, status: :created, location: @track }
       else

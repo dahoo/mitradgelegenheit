@@ -2,7 +2,12 @@ require 'rails_helper'
 
 RSpec.feature 'Track creation', type: :feature do
   let(:user) { FactoryGirl.create :user }
+  let!(:admin) { FactoryGirl.create :admin }
   let(:date) { Date.today + 2.years }
+
+  let(:mails) { ActionMailer::Base.deliveries }
+  let(:mail) { mails.first }
+
   before { page.driver.block_unknown_urls }
 
   scenario 'User creates a new repeating track', :js => true do
@@ -35,9 +40,13 @@ RSpec.feature 'Track creation', type: :feature do
 
     4.times { find('.map').click }
 
-    click_button 'Strecke erstellen'
+    Sidekiq::Testing.inline! do
+      click_button 'Strecke erstellen'
 
-    expect(page).to have_text('Strecke wurde erfolgreich erstellt!')
-    expect(page).to have_text(I18n.l date)
+      expect(page).to have_text('Strecke wurde erfolgreich erstellt!')
+      expect(page).to have_text(I18n.l date)
+      expect(mails.size).to eq 1
+      expect(mail.to).to eq [admin.email]
+    end
   end
 end

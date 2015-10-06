@@ -32,7 +32,7 @@ gem 'leaflet-rails'
 gem 'geocoder'
 gem 'gpx'
 
-gem 'slim'
+gem 'slim-rails'
 gem 'font-awesome-sass'
 
 gem 'bootstrap-sass', '~> 3.3.0'
@@ -46,6 +46,7 @@ gem 'devise'
 gem 'tod'
 gem 'ice_cube'
 gem 'rails-i18n'
+gem 'sidekiq'
 
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-uberspace', github: 'tessi/capistrano-uberspace'
@@ -61,6 +62,9 @@ group :development do
   gem 'libnotify'
   gem 'rubocop'
   gem 'rubocop-rspec'
+  gem 'pry-rails'
+  gem 'letter_opener'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do

@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
          :recoverable
 
   validates :name, presence: true, allow_blank: false
+
+  scope :admin, -> { where admin: true }
 end

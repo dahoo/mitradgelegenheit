@@ -224,3 +224,9 @@ de:
         wasntyou: "Falls du dies nicht angefordert hast, ignoriere diese Mail bitte."
         password_wont_change: "Dein Passwort wird nicht geändert bis du den Link aufrufst und ein neues festlegst."
 
+  notification_mailer:
+    new_track:
+      subject: Neue Strecke eingetragen
+      title:
+        text: 'Neue Strecke eingetragen: %{name}'
+        html: 'Neue Strecke eingetragen: <a href=%{link}>%{name}</a>'
