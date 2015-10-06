@@ -1,5 +1,5 @@
 class NotificationMailer < ActionMailer::Base
-  default from: 'info@mitradgelegenheit.de'
+  default from: 'MitRADgelegenheit <info@mitradgelegenheit.de>'
   layout 'mailer'
 
   def new_track(track, admin)
