@@ -1,6 +1,5 @@
 small= "erstellt #{"von #{@track.user.name}" if @track.user} #{time_ago_in_words @track.created_at}"
-.hidden#track-id
-  = track.id
+.hidden#track-id= track.id
 ul.icon-list
   li.track-detail
     .icon-list-icon.no-list-group
@@ -26,6 +25,12 @@ ul.icon-list
         i.fa.fa-external-link.fa-2x
       .icon-list-description
         = link_to 'Event', track.link, target: '_blank'
+  - unless track.description.blank?
+    li.track-detail
+      .icon-list-icon.no-list-group
+        i.fa.fa-info-circle.fa-2x
+      .icon-list-description
+        = track.description
 ul.icon-list.list-group
   - track.starts.order(:time).each do |start|
     li.list-group-item

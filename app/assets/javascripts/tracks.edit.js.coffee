@@ -75,7 +75,7 @@ $(document).ready ->
       maxZoom: 18
     }).addTo(map)
 
-    id = $('#track-id').text()
+    id = $.trim($('#track-id').text())
 
     $.get("/tracks/#{id}.json").done (json) ->
       drawTrack(map, json)

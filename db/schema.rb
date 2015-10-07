@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916203723) do
+ActiveRecord::Schema.define(version: 20151006220717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150916203723) do
     t.integer  "color_index"
     t.integer  "user_id"
     t.string   "category"
+    t.text     "description", default: ""
   end
 
   add_index "tracks", ["user_id"], name: "index_tracks_on_user_id", using: :btree

@@ -37,6 +37,14 @@ body.tracks_controller {
     .btn-group {
       margin-top: 20px;
     }
+
+    input[type=text], textarea, select {
+      width: 100%
+    }
+
+    select#track_category {
+      width: 100%;
+    }
   }
 
   #start_times .checkbox {

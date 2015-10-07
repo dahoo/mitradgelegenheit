@@ -22,7 +22,7 @@ drawTracks = (json, fit) ->
         layer_arr.push L.marker([end.latitude, end.longitude], {icon: endMarker, title: end.description})
 
     link = $("<div data-url='tracks/#{track.id}'>").html(
-      "<div class='lead'>#{track.name}</div><a class='btn btn-primary btn-xs btn-block' href='tracks/#{track.id}'>Details</a>").click(->
+      "<div class='lead'>#{track.name}</div><p>#{shorten(track.description, 150)}</p><a class='btn btn-primary btn-xs btn-block' href='tracks/#{track.id}'>Details</a>").click(->
       location.href = $(this).data('url')
       )[0]
 
@@ -36,6 +36,12 @@ drawTracks = (json, fit) ->
 
   window.global_layer.addTo(window.map)
   window.map.fitBounds(global_layer.getBounds(), {padding: [0, 20]}) if fit
+
+shorten = (text, maxLength) ->
+  ret = text
+  if ret.length > maxLength
+    ret = ret.substr(0, maxLength - 3) + '&hellip;'
+  ret
 
 highlightTrack = (e) ->
   layer = e.target

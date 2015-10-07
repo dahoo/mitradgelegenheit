@@ -10,7 +10,7 @@ module TracksHelper
   end
 
   def every_names
-    {'jeden' => 1, 'jeden 2.' => 2, 'jeden: 3.' => 3, 'jeden 4.' => 4, 'jeden letzten' => -1}
+    {'jeden' => 1, 'jeden 2.' => 2, 'jeden 3.' => 3, 'jeden 4.' => 4, 'jeden letzten' => -1}
   end
 
   def track_categories
