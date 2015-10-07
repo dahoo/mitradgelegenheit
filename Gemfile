@@ -51,7 +51,7 @@ gem 'sidekiq'
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-uberspace', github: 'tessi/capistrano-uberspace'
 gem 'passenger', group: :production
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails'
 
 group :development do
   gem 'spring'
