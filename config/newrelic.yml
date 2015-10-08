@@ -1,12 +1,14 @@
 #
-# This file configures the New Relic Agent.  New Relic monitors
-# Ruby, Java, .NET, PHP, and Python applications with deep visibility and low overhead.
-# For more information, visit www.newrelic.com.
+# This file configures the New Relic Agent.  New Relic monitors Ruby, Java,
+# .NET, PHP, Python and Node applications with deep visibility and low
+# overhead.  For more information, visit www.newrelic.com.
 #
-# Generated June 03, 2013
+# Generated October 07, 2015
 #
-# This configuration file is custom generated for Barsoom
-
+# This configuration file is custom generated for Mitradgelegenheit
+#
+# For full documentation of agent configuration options, please refer to
+# https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
 
 # Here are the settings that are common to all environments
 common: &default_settings
@@ -42,7 +44,7 @@ common: &default_settings
   #       - Ajax Service
   #       - All Services
   #
-  app_name: <%= ENV["NEW_RELIC_APP_NAME"] %>
+  app_name: '<%= ENV["NEW_RELIC_APP_NAME"] %>'
 
   # When "true", the agent collects performance data about your
   # application and reports this data to the New Relic service at
