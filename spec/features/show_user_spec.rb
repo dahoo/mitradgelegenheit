@@ -11,7 +11,7 @@ RSpec.feature 'Show user', type: :feature do
     before { login_as(user, :scope => :user) }
 
     scenario 'User views other profile', :js => true do
-      visit "/users/#{admin.id}"
+      visit "/users/#{user_2.id}"
 
       expect(page).to have_text(track_2.name)
       expect(page).to have_text(user_2.name)
