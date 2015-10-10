@@ -7,7 +7,7 @@ class Track < ActiveRecord::Base
   has_many :ends, dependent: :destroy, autosave: true
   has_many :start_times, dependent: :destroy, autosave: true
 
-  scope :active, -> { joins { start_times }.where { (start_times.date.nil?) | (start_times.date >= Date.today) }.group { id } }
+  scope :active, -> { joins { start_times }.where { (start_times.date == nil) | (start_times.date >= Date.today) }.group { id } }
   scope :by_created_at, -> { order :created_at }
 
   after_initialize :init
