@@ -1,7 +1,12 @@
-h1= "#{@user.name.possessive} Strecken"
+h1= "#{@user.id == current_user.id ? 'Meine' : @user.name.possessive} Strecken"
 
 - if @user.tracks.empty?
-  p Dieser Nutzer hat noch keine Strecken angelegt.
+  p
+    - if @user.id == current_user.id
+      ' Du hast
+    - else
+      ' Dieser Nutzer hat
+    | noch keine Strecken angelegt.
 - else
   table.table.table-hover
     th Name
