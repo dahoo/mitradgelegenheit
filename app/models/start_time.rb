@@ -4,11 +4,11 @@ class StartTime < ActiveRecord::Base
   belongs_to :track
   serialize :time, Tod::TimeOfDay
 
-  scope :active, -> { where{(date.eq nil) | (date >= Date.today) } }
+  scope :active, -> { where { (date.eq nil) | (date >= Time.zone.today) } }
 
   before_save :check_is_repeated
 
-  validate :every, inclusion: { in: -1..4 }
+  validate :every, inclusion: {in: -1..4}
 
   def check_is_repeated
     if is_repeated
@@ -27,8 +27,8 @@ class StartTime < ActiveRecord::Base
   end
 
   def to_s
-    every_text = ""
-    every_text = every_names.invert[every] + " " if is_repeated
+    every_text = ''
+    every_text = every_names.invert[every] + ' ' if is_repeated
     "#{every_text}#{day}, #{time_h_m}"
   end
 
@@ -41,17 +41,38 @@ class StartTime < ActiveRecord::Base
   end
 
   def next_occurence
-    if is_repeated
-      schedule = IceCube::Schedule.new(now = time.on(track.created_at))
-      if every >= 0
-        rule = IceCube::Rule.weekly(every).day((day_of_week + 1) % 7)
-      else
-        rule = IceCube::Rule.monthly.day_of_week((day_of_week + 1) % 7 => [-1])
-      end
-      schedule.add_recurrence_rule(rule)
-      schedule.next_occurrence
+    occurences = next_occurences(1)
+    occurences.first if occurences
+  end
+
+  def compute_schedule
+    schedule = IceCube::Schedule.new(time.on(track.created_at))
+    if every >= 0
+      rule = IceCube::Rule.weekly(every).day((day_of_week + 1) % 7)
     else
-      date if Date.today <= date
+      rule = IceCube::Rule.monthly.day_of_week((day_of_week + 1) % 7 => [-1])
+    end
+    schedule.add_recurrence_rule(rule)
+    schedule
+  end
+
+  def next_occurences(count)
+    if is_repeated
+      schedule = compute_schedule
+      schedule.next_occurrences(count)
+    else
+      [date] if Time.zone.today <= date
+    end
+  end
+
+  def next_occurences_in_days(days)
+    if is_repeated
+      schedule = compute_schedule
+      schedule.occurrences_between(
+        Time.zone.today.beginning_of_day,
+        days.days.from_now.end_of_day)
+    else
+      [date] if Time.zone.today <= date && date <= days.days.from_now.to_date
     end
   end
 end

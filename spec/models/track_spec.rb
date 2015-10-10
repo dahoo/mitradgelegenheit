@@ -20,9 +20,7 @@ RSpec.describe Track, type: :model do
     let!(:track_with_date) { FactoryGirl.create :track_with_date, user: user }
     let!(:track_with_passed_date) { FactoryGirl.create :track_with_passed_date, user: user }
 
-    before do
-      track
-    end
+    before { track }
 
     subject { described_class.active.pluck(:id) }
 
@@ -50,6 +48,15 @@ RSpec.describe Track, type: :model do
         track.compute_length
         expect(track.distance).to be_within(0.1).of(7.58)
       end
+    end
+  end
+
+  describe '#next_occurence' do
+    it "returns the track's next occurence" do
+      date  = Date.parse("Tuesday")
+      delta = date > Date.today ? 0 : 7
+      date += delta
+      expect(track.next_occurence).to eq(track.start_times.first.time.on(date))
     end
   end
 end
