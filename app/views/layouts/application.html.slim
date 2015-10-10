@@ -36,8 +36,11 @@ html lang='de'
               = link_to 'Neue Strecke anlegen', new_track_path
           ul.nav.navbar-nav.navbar-right
             li
-              a href='https://www.facebook.com/mitradgelegenheit'
+              = link_to 'https://www.facebook.com/mitradgelegenheit'
                 i.fa.fa-facebook
+            li
+              = link_to 'https://github.com/dahoo/mitradgelegenheit'
+                i.fa.fa-github
             li class="#{'active' if current_page? static_about_path}"
               = link_to 'Über uns', static_about_path
             - if user_signed_in?
