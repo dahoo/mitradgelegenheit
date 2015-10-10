@@ -11,6 +11,7 @@ FactoryGirl.define do
     starts { [FactoryGirl.create(:start)] }
     ends   { [FactoryGirl.create(:end)] }
     category 'other'
+    distance '2'
 
     factory :track_attributes do
       name 'Mitradgelegenheit'

@@ -12,10 +12,15 @@ admin = User.create! name: 'Admin',
                     email: 'admin@example.com',
                     admin: true
 
+user = User.create! name: 'User',
+                    password: 'user1234',
+                    email: 'user@example.com'
+
 track = Track.create! name: 'HU Berlin',
                      distance: 5,
                      link: 'https://www.facebook.com/events/878752632159575',
-                     category: 'commute'
+                     category: 'commute',
+                     user: admin
 
 i = 0
 [[52.5390921, 13.4240913],
@@ -57,7 +62,8 @@ end
 track2 = Track.create name: 'TU Berlin',
                       distance: 7,
                       link: 'https://www.facebook.com/events/346185055556761',
-                      category: 'commute'
+                      category: 'commute',
+                      user: user
 
 i = 0
 [[52.4912212, 13.4204650],
@@ -112,7 +118,9 @@ track2.ends.create latitude: 52.5122511,
 
 track3 = Track.create name: 'Beuth Hochschule',
                       distance: 11,
-                      category: 'commute'
+                      category: 'commute',
+                      user: user
+
 i = 0
 [[52.4766641, 13.4187376],
  [52.4775920, 13.4262156],

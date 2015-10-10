@@ -9,5 +9,5 @@ table.table.table-hover
     tr
       td= link_to "#{user.name} #{'(Admin)' if user.admin}" , user_path(user)
       td= l user.created_at, format: :short
-      td= l user.last_sign_in_at, format: :short
+      td= l(user.last_sign_in_at, format: :short) if user.last_sign_in_at
       td= user.tracks.size

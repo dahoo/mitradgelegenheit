@@ -1,8 +1,8 @@
-h1= "#{@user.id == current_user.id ? 'Meine' : @user.name.possessive} Strecken"
+h1= "#{current?(@user) ? 'Meine' : @user.name.possessive} Strecken"
 
 - if @user.tracks.empty?
   p
-    - if @user.id == current_user.id
+    - if current? @user
       ' Du hast
     - else
       ' Dieser Nutzer hat
