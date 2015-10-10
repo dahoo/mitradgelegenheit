@@ -56,8 +56,8 @@ ul.icon-list.list-group
     |GPX
   - if admin_signed_in? || (user_signed_in? && current_user == track.user)
     = link_to edit_track_path(track), class: 'btn btn-default'
-      i.fa.fa-edit.mr10
-      |Ändern
+      i.fa.fa-edit
+      span.sr-only Ändern
     = link_to track_path(track), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'
-      i.fa.fa-trash.mr10
-      |Löschen
+      i.fa.fa-trash
+      span.sr-only Löschen
