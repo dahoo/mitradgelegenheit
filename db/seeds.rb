@@ -7,9 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+admin = User.create! name: 'Admin',
+                    password: 'admin123',
+                    email: 'admin@example.com',
+                    admin: true
+
 track = Track.create! name: 'HU Berlin',
                      distance: 5,
-                     link: 'https://www.facebook.com/events/878752632159575'
+                     link: 'https://www.facebook.com/events/878752632159575',
+                     category: 'commute'
 
 i = 0
 [[52.5390921, 13.4240913],
@@ -29,9 +35,9 @@ i = 0
   i += 1
 end
 
-track.start_times = [StartTime.create!(day_of_week: 2, time: (TimeOfDay.new 9, 45)),
-                     StartTime.create!(day_of_week: 3, time: (TimeOfDay.new 9, 45)),
-                     StartTime.create!(day_of_week: 4, time: (TimeOfDay.new 9, 45))]
+track.start_times += [StartTime.create!(day_of_week: 2, is_repeated: true, time: (TimeOfDay.new 9, 45)),
+                     StartTime.create!(day_of_week: 3, is_repeated: true, time: (TimeOfDay.new 9, 45)),
+                     StartTime.create!(day_of_week: 4, is_repeated: true, time: (TimeOfDay.new 9, 45))]
 
 track.starts = [Start.create(latitude: 52.5390921,
                              longitude: 13.4240913,
@@ -50,7 +56,8 @@ end
 
 track2 = Track.create name: 'TU Berlin',
                       distance: 7,
-                      link: 'https://www.facebook.com/events/346185055556761'
+                      link: 'https://www.facebook.com/events/346185055556761',
+                      category: 'commute'
 
 i = 0
 [[52.4912212, 13.4204650],
@@ -85,8 +92,8 @@ i = 0
   i += 1
 end
 
-track2.start_times = [StartTime.create(day_of_week: 2, time: (TimeOfDay.new 7, 30)),
-                     StartTime.create(day_of_week: 2, time: (TimeOfDay.new 9, 20))]
+track2.start_times += [StartTime.create(day_of_week: 2, is_repeated: true, time: (TimeOfDay.new 7, 30)),
+                     StartTime.create(day_of_week: 2, is_repeated: true, time: (TimeOfDay.new 9, 20))]
 
 [[52.4915739, 13.4204006, 0, 'Hohenstaufenplatz'],
  [52.4994384, 13.3888793, 15, 'Willy-Brand-Haus']
@@ -104,8 +111,8 @@ track2.ends.create latitude: 52.5122511,
 
 
 track3 = Track.create name: 'Beuth Hochschule',
-                      distance: 11
-
+                      distance: 11,
+                      category: 'commute'
 i = 0
 [[52.4766641, 13.4187376],
  [52.4775920, 13.4262156],
@@ -131,7 +138,7 @@ i = 0
   i += 1
 end
 
-track3.start_times = [StartTime.create(day_of_week: 2, time: (TimeOfDay.new 8, 50))]
+track3.start_times += [StartTime.create(day_of_week: 2, is_repeated: true, time: (TimeOfDay.new 8, 50))]
 
 track3.starts.create(latitude: 52.4766445,
                     longitude: 13.4186840,
