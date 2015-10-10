@@ -63,12 +63,16 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'letter_opener'
   gem 'capistrano-sidekiq'
 end
 
-group :test do
+group :development, :test do
   gem 'rspec-rails'
+end
+
+group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'database_cleaner'
