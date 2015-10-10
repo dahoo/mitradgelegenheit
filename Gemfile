@@ -62,14 +62,14 @@ group :development do
   gem 'libnotify'
   gem 'rubocop'
   gem 'rubocop-rspec'
-  gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'letter_opener'
   gem 'capistrano-sidekiq'
 end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do
