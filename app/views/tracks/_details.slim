@@ -1,5 +1,7 @@
-small= "erstellt #{"von #{@track.user.name}" if @track.user} #{time_ago_in_words @track.created_at}"
-.hidden#track-id= track.id
+small
+  == "erstellt #{"von #{link_to @track.user.name, user_path(@track.user)}" if @track.user}"
+  = " #{time_ago_in_words @track.created_at}"
+<div class="hidden" id="track-id">#{@track.id}</div>
 ul.icon-list
   li.track-detail
     .icon-list-icon.no-list-group

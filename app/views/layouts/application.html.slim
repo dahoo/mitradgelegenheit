@@ -41,9 +41,16 @@ html lang='de'
             li class="#{'active' if current_page? static_about_path}"
               = link_to 'Über uns', static_about_path
             - if user_signed_in?
-              li class="#{'active' if current_page? edit_user_registration_path}"
-                = link_to edit_user_registration_path
-                  i.fa.fa-user
+              li.dropdown
+                a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  i.fa.fa-user.mr10
+                  = current_user.name
+                  span.caret
+                ul.dropdown-menu.dropdown-menu-right
+                  li
+                    = link_to 'Angaben ändern', edit_user_registration_path
+                  li
+                    = link_to 'Meine Strecken', user_path(current_user)
               li
                 = link_to destroy_user_session_path, method: :delete
                   i.fa.fa-sign-out
@@ -53,7 +60,7 @@ html lang='de'
 
     = flash_messages
 
-    - if controller_name == 'static' or controller_name == 'sessions'
+    - if %w{static sessions users}.include? controller_name
       #wrapper.container
         = yield
     - else

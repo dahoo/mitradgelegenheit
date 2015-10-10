@@ -278,3 +278,26 @@ select.select {
 .leaflet-control-geosearch {
   margin-top: 20px !important;
 }
+
+ul.dropdown-menu-right {
+    left: initial !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    border-radius: 0px !important;
+    box-shadow: none;
+    border: none;
+}
+
+.navbar ul.dropdown-menu a {
+    color: #777777;
+}
+
+.navbar .nav ul.dropdown-menu a:hover {
+    color: #27AE60;
+    background-color: #e7e7e7;
+}
+
+.nav ul.dropdown-menu li {
+    background-color: #e7e7e7;
+    border-radius: 0px !important;
+}

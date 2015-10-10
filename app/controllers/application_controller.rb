@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate_admin!
-    redirect_to :new_user_session_path unless current_user && current_user.admin?
+    if current_user
+      redirect_to root_path, flash: { error: 'Aktion nicht erlaubt.' } unless current_user.admin?
+    else
+      redirect_to new_user_session_path, flash: { error: 'Bitte melde dich zuerst an.' }
+    end
   end
 
   def sanitize_filename(filename)

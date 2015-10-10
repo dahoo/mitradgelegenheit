@@ -5,7 +5,11 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable,
          :recoverable
 
+  has_many :tracks
+
   validates :name, presence: true, allow_blank: false
 
   scope :admin, -> { where admin: true }
+  scope :by_admin, -> { order 'admin DESC' }
+  scope :by_name, -> { order :name }
 end

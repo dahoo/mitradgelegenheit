@@ -2,7 +2,7 @@
 .row
   #side-bar.col-md-3
     h1 = yield :title
-    .hidden#track-id=@track.id
+    <div class="hidden" id="track-id">#{@track.id}</div>
     = render 'form'
   .col-md-9#map-col
     .map#map-edit-track

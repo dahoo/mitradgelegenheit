@@ -1,0 +1,13 @@
+h1 Nutzer
+
+table.table.table-hover
+  th Name
+  th Angemeldet
+  th Letzter Login
+  th Strecken
+  - @users.each do |user|
+    tr
+      td= link_to "#{user.name} #{'(Admin)' if user.admin}" , user_path(user)
+      td= l user.created_at, format: :short
+      td= l user.last_sign_in_at, format: :short
+      td= user.tracks.size
