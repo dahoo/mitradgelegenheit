@@ -107,7 +107,8 @@ $(document).ready ->
       enableAutocomplete: true
       autocompleteMinQueryLen: 5
       searchLabel: 'Nach Adresse suchen'
-      notFoundMessage: 'Diese Adresse konnte nicht gefunden werden.').addTo window.map
+      notFoundMessage: 'Diese Adresse konnte nicht gefunden werden.'
+      zoomLevel: 16).addTo window.map
 
     $.get('/tracks.json?with_points=true').done (json) ->
       window.json = json
