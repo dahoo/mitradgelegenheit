@@ -57,16 +57,40 @@ resetHighlight = (e) ->
     opacity: 0.5,
     weight: 5
 
-filterTracks = (name, category) ->
+filterTracks = (name, category, date_field) ->
+  if date_field
+    date = moment().startOf('day')
+    range = false
+    switch date_field
+      when 'tomorrow'
+        date.add(1, 'd')
+      when 'day_after_tomorrow'
+        date.add(2, 'd')
+      when 'next_week'
+        range = true
+        date.add(6, 'd')
+
   tracks = window.json.filter (entry) ->
+    date_matched = true
+    if date
+      date_matched = !!(entry.occurences_7_days.filter (occurence) ->
+        if range
+          date.isAfter(moment(occurence), 'day')
+        else
+          date.isSame(moment(occurence), 'day')
+        ).length
     (name == '' or entry.name.toLowerCase().indexOf(name.toLowerCase()) > -1) and
-    (category == '' or entry.category == category)
+    (category == '' or entry.category == category) and
+    date_matched
+
   window.global_layer.clearLayers()
   drawTracks(tracks, false)
 
 resetFilter = ->
   $('#search_query_field').val('')
   $('#category_field').val('')
+  $('#date_field').val('')
+  window.global_layer.clearLayers()
   drawTracks(window.json)
 
 $(document).ready ->
@@ -103,7 +127,7 @@ $(document).ready ->
       L.DomEvent.disableClickPropagation div
 
     $('#filter_btn').click ->
-      filterTracks($('#search_query_field').val(), $('#category_field  ').val())
+      filterTracks($('#search_query_field').val(), $('#category_field  ').val(), $('#date_field  ').val())
 
     $('#filter_reset_btn').click ->
       resetFilter()

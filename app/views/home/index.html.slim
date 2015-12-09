@@ -14,7 +14,14 @@
           = select_tag(:category,
                       options_from_collection_for_select(track_categories, 'second', 'first'),
                       id: 'category_field',
-                      include_blank: '- Any -',
+                      include_blank: '- Alle -',
+                      class: 'form-control select')
+        div
+          = label_tag 'date', 'Datum'
+          = select_tag(:date,
+                      options_from_collection_for_select([['today', 'Heute'], ['tomorrow', 'Morgen'], ['day_after_tomorrow', 'Übermorgen'], ['next_week', 'Nächste 7 Tage']], 'first', 'last'),
+                      id: 'date_field',
+                      include_blank: '- Alle -',
                       class: 'form-control select')
         .btn-group
           = link_to 'Filtern', '#', class: 'btn btn-primary btn-lg', role: "button", id: 'filter_btn'
