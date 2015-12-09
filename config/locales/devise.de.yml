@@ -14,8 +14,8 @@ de:
       invalid_token: "Der Anmelde-Token ist ungültig."
       locked: "Dein Account ist gesperrt."
       not_found_in_database: "E-Mail-Adresse oder Passwort ungültig."
-      timeout: "Deine Sitzung ist abgelaufen, bitte melde Dich erneut an."
-      unauthenticated: "Du musst Dich anmelden oder registrieren, bevor du fortfahren kannst."
+      timeout: "Deine Sitzung ist abgelaufen, bitte melde dich erneut an."
+      unauthenticated: "Du musst dich anmelden oder registrieren, bevor du fortfahren kannst."
       unconfirmed: "Du musst deinen Account bestätigen, bevor du fortfahren kannst."
     mailer:
       confirmation_instructions:
@@ -26,7 +26,7 @@ de:
         subject: "Anleitung um deinen Account freizuschalten"
     omniauth_callbacks:
       failure: "Du konntest nicht deinem %{kind}-Account angemeldet werden, weil '%{reason}'."
-      success: "Du hast Dich erfolgreich mit deinem %{kind}-Account angemeldet."
+      success: "Du hast dich erfolgreich mit deinem %{kind}-Account angemeldet."
     passwords:
       no_token: "Du kannst diese Seite nur von dem Link aus einer E-Mail zum Passwort-Zurücksetzen aufrufen. Wenn du einen solchen Link aufgerufen hast stelle bitte sicher, dass du die vollständige Adresse aufrufst."
       send_instructions: "Du erhältst in wenigen Minuten eine E-Mail mit der Anleitung, wie du dein Passwort zurücksetzen kannst."
@@ -36,9 +36,9 @@ de:
     registrations:
       destroyed: "Dein Account wurde gelöscht."
       signed_up: "Du hast dich erfolgreich registriert."
-      signed_up_but_inactive: "Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da dein Account inaktiv ist."
-      signed_up_but_locked: "Du hast dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da dein Account gesperrt ist."
-      signed_up_but_unconfirmed: "Du hast Dich erfolgreich registriert. Wir konnten Dich noch nicht anmelden, da dein Account noch nicht bestätigt ist. Du erhältst in Kürze eine E-Mail mit der Anleitung, wie du deinen Account freischalten kannst."
+      signed_up_but_inactive: "Du hast dich erfolgreich registriert. Wir konnten dich noch nicht anmelden, da dein Account inaktiv ist."
+      signed_up_but_locked: "Du hast dich erfolgreich registriert. Wir konnten dich noch nicht anmelden, da dein Account gesperrt ist."
+      signed_up_but_unconfirmed: "Du hast dich erfolgreich registriert. Wir konnten dich noch nicht anmelden, da dein Account noch nicht bestätigt ist. Du erhältst in Kürze eine E-Mail mit der Anleitung, wie du deinen Account freischalten kannst."
       update_needs_confirmation: "Deine Daten wurden aktualisiert, aber du musst deine neue E-Mail-Adresse bestätigen. Du erhälsts in wenigen Minuten eine E-Mail, mit der du die Änderung deiner E-Mail-Adresse abschließen kannst."
       updated: "Deine Daten wurden aktualisiert."
     sessions:
