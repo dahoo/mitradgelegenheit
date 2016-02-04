@@ -2,7 +2,7 @@ doctype 5
 html lang='de'
   head
     title
-      = "#{"#{yield :title} - " if not yield(:title).blank?}MitRADgelegenheit"
+      = "#{"#{yield :title} - " if not yield(:title).blank?}mitRADgelegenheit"
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -26,7 +26,7 @@ html lang='de'
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          = link_to 'MitRADgelegenheit', root_path, class: 'navbar-brand'
+          = link_to 'mitRADgelegenheit', root_path, class: 'navbar-brand'
         /! Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
