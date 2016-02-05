@@ -38,12 +38,11 @@ class Track < ActiveRecord::Base
   end
 
   def color
-    Track.colors[color_index % Track.colors.size]
+    Track.colors[Track.categories.index(category) % Track.colors.size]
   end
 
   def self.colors
-    ['red', '#D91E18', '#96281B', '#2574A9', '#1E824C', '#F89406', '#6C7A89',
-     '#22313F', '#2ECC71']
+    ['#334D5C', '#45B29D', '#FFC300', '#E27A3F', '#DF4949']
   end
 
   def compute_length
