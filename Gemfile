@@ -55,7 +55,6 @@ gem 'dotenv-rails'
 
 group :development do
   gem 'spring'
-  gem 'simplecov'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard-rspec', require: false
@@ -77,6 +76,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'simplecov', require: false
 end
 
 gem 'rails_12factor', group: :production
