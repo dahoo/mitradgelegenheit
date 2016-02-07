@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :add_meta_tags
 
   def authenticate_admin!
     if current_user
@@ -25,5 +26,16 @@ class ApplicationController < ActionController::Base
 
     # Finally, join the parts with a period and return the result
     return fn.join '.'
+  end
+
+  def add_meta_tags
+    set_meta_tags(
+      description: I18n.t(:'meta.description'),
+      keywords: ['Fahrrad', 'Rad', 'Mitradgelegenheit', 'Berlin', 'Critical Mass'],
+      canonical: 'http://mitradgelegenheit.de',
+      og: {
+        image: 'http://mitradgelegenheit.de/logo.png'
+      }
+    )
   end
 end

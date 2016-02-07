@@ -215,6 +215,9 @@ de:
         one: Strecke
         other: Strecken
 
+  meta:
+    description: Finde andere mitRADler um gemeinsam Rad zu fahren.
+
   devise:
     mailer:
       reset_password_instructions:

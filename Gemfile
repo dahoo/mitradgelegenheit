@@ -47,6 +47,7 @@ gem 'tod'
 gem 'ice_cube'
 gem 'rails-i18n'
 gem 'sidekiq'
+gem 'meta-tags'
 
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-uberspace', github: 'tessi/capistrano-uberspace'
