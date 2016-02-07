@@ -34,6 +34,8 @@ class ApplicationController < ActionController::Base
       keywords: ['Fahrrad', 'Rad', 'Mitradgelegenheit', 'Berlin', 'Critical Mass'],
       canonical: 'http://mitradgelegenheit.de',
       og: {
+        description: I18n.t(:'meta.description'),
+        url: 'http://mitradgelegenheit.de',
         image: 'http://mitradgelegenheit.de/logo.png'
       }
     )
