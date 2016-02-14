@@ -48,11 +48,14 @@ gem 'ice_cube'
 gem 'rails-i18n'
 gem 'sidekiq'
 gem 'meta-tags'
+gem 'draper'
 
 gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-uberspace', github: 'tessi/capistrano-uberspace'
 gem 'passenger', group: :production
 gem 'dotenv-rails'
+
+gem 'rack-cors'
 
 group :development do
   gem 'spring'
