@@ -39,6 +39,7 @@ class TrackDecorator < Draper::Decorator
         type: 'Feature',
         properties: {
           description: way_point.description,
+          type: way_point.type.downcase,
           color: way_point.type == 'Start' ? '#72b026' : '#d63e2a'
         },
         geometry: {
