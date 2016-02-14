@@ -11,6 +11,7 @@ class TracksController < ApplicationController
     if params[:with_points] == 'true'
       @tracks.includes :track_points
     end
+    @geo_json = params[:geojson].present?
   end
 
   # GET /tracks/1
@@ -19,7 +20,7 @@ class TracksController < ApplicationController
     respond_to do |format|
       format.html { render :show }
       format.json { render :show }
-      format.gpx { send_data @track.to_gpx, filename: sanitize_filename("#{@track.name}.gpx") }
+      format.gpx { send_data @track.decorate.to_gpx, filename: sanitize_filename("#{@track.name}.gpx") }
      end
   end
 

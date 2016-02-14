@@ -80,20 +80,4 @@ class Track < ActiveRecord::Base
   def self.options_for_category
     track_categories
   end
-
-  def to_gpx
-    gpx = GPX::GPXFile.new
-    points = []
-    track_points.each do |track_point|
-      points << GPX::Point.new(lat: track_point.latitude,
-                               lon: track_point.longitude)
-    end
-    (starts + ends).each do |way_point|
-      gpx.waypoints << GPX::Waypoint.new(name: way_point.description,
-                                         lat: way_point.latitude,
-                                         lon: way_point.longitude)
-    end
-    gpx.routes << GPX::Route.new(points: points, name: name)
-    gpx.to_s
-  end
 end
