@@ -23,6 +23,8 @@ class TrackDecorator < Draper::Decorator
       properties: {
         name: name,
         description: description,
+        category: category,
+        occurences_7_days: next_occurences_in_days(7),
         color: color,
         weight: 5,
         url: Rails.application.routes.url_helpers.track_url(self)
