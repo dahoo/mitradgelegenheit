@@ -6,3 +6,6 @@
     = f.input :time, required: true, label: 'Fahrtzeit ab Start (Minuten)'
     = f.input :latitude, as: :hidden
     = f.input :longitude, as: :hidden
+
+    = link_to_remove_association f, class: 'btn btn-danger btn-sm mls' do
+        i.fa.fa-trash

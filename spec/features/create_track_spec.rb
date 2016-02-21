@@ -8,8 +8,6 @@ RSpec.feature 'Track creation', type: :feature do
   let(:mails) { ActionMailer::Base.deliveries }
   let(:mail) { mails.first }
 
-  before { page.driver.block_unknown_urls }
-
   scenario 'User creates a new repeating track', :js => true do
     login_as(user, :scope => :user)
 

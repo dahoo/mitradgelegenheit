@@ -12,9 +12,9 @@ class Track < ActiveRecord::Base
 
   after_initialize :init
 
-  accepts_nested_attributes_for :start_times
-  accepts_nested_attributes_for :starts
-  accepts_nested_attributes_for :ends
+  accepts_nested_attributes_for :start_times, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :starts, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :ends, reject_if: :all_blank, allow_destroy: true
 
   def self.categories
     %w(commute leisure event other)
