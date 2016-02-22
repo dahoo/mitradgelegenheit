@@ -25,9 +25,8 @@ describe TrackDecorator, type: :decorator do
     end
 
     it 'is expected to have next occurences' do
-      expect(subject[:features].first[:properties][:occurences_7_days]).to eq [
-        '2016-02-16T00:44:29Z', '2016-02-23T00:44:29Z', '2016-02-16T00:44:29Z',
-        '2016-02-23T00:44:29Z', '2016-02-16T00:44:29Z', '2016-02-23T00:44:29Z']
+      expect(subject[:features].first[:properties][:occurences_7_days]).to eq(
+        track.next_occurences_in_days(7))
     end
   end
 end

@@ -5,7 +5,6 @@ RSpec.feature 'Show user', type: :feature do
   let(:user_2) { FactoryGirl.create :user_2 }
   let!(:track) { FactoryGirl.create :track, user: user, name: 'Track 1' }
   let!(:track_2) { FactoryGirl.create :track, user: user_2, name: 'Track 2' }
-  before { page.driver.block_unknown_urls }
 
   context 'as user' do
     before { login_as(user, :scope => :user) }

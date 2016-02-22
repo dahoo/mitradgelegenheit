@@ -5,7 +5,7 @@ RSpec.feature 'Track editing', type: :feature do
   let(:track) { FactoryGirl.create :track, user: user }
   let(:track_with_date) { FactoryGirl.create :track_with_date, user: user }
   let(:date) { Date.today + 2.years }
-  before { page.driver.block_unknown_urls }
+  before { Capybara.current_session.current_window.resize_to 1200, 1200 }
 
   scenario 'User changes day of week', :js => true do
     login_as(user, :scope => :user)
@@ -14,7 +14,6 @@ RSpec.feature 'Track editing', type: :feature do
 
     find('#track_name').set 'My Track'
     first(".wday_select").find("option[value='4']", text: 'Freitag').select_option
-    #4.times { find('.map').click }
 
     click_button 'Strecke aktualisieren'
 
@@ -65,5 +64,40 @@ RSpec.feature 'Track editing', type: :feature do
     expect(page).to have_text('Die Strecke wurde erfolgreich aktualisiert.')
     expect(page).to have_text('Freitag')
     expect(page.all('.leaflet-marker-pane .awesome-marker').size).to eq 2
+  end
+
+  scenario 'User adds starts', :js => true do
+    login_as(user, :scope => :user)
+
+    visit "/tracks/#{track.id}/edit"
+
+    find('#track_name').set 'My Track'
+    first(".leaflet-control-container").find("a[title='Start hinzufügen']").click
+    find('.map').click
+
+    click_button 'Strecke aktualisieren'
+
+    expect(page).to have_text('Die Strecke wurde erfolgreich aktualisiert.')
+    expect(page.all('.leaflet-marker-pane .awesome-marker').size).to eq 3
+  end
+
+  scenario 'User deletes starts', :js => true do
+    login_as(user, :scope => :user)
+
+    visit "/tracks/#{track.id}/edit"
+
+    find('#track_name').set 'My Track'
+    first(".leaflet-control-container").find("a[title='Start hinzufügen']").click
+    find('.map').click
+    expect(page.all('.leaflet-marker-pane .awesome-marker').size).to eq 3
+
+    page.all('#starts .remove_fields').last.click
+
+    click_button 'Strecke aktualisieren'
+
+    expect(page).to have_text('Die Strecke wurde erfolgreich aktualisiert.')
+
+    expect(track.starts.size).to eq 1
+    expect(track.ends.size).to eq 1
   end
 end
