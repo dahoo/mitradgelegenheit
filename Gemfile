@@ -47,6 +47,7 @@ gem 'tod'
 gem 'ice_cube'
 gem 'rails-i18n'
 gem 'sidekiq'
+gem 'ledermann-rails-settings'
 gem 'meta-tags'
 gem 'draper'
 

@@ -1,0 +1,6 @@
+<%= t(:'.title.text', track_name: @comment.track_name) %>
+
+<%= t(:'.author', name: @comment.user_name) %>
+<%= simple_format(@comment.text) %>
+
+<%= track_url(@comment.track) %>

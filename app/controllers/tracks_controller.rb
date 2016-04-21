@@ -17,6 +17,7 @@ class TracksController < ApplicationController
   # GET /tracks/1
   # GET /tracks/1.json
   def show
+    @comment = Comment.new track: @track
     respond_to do |format|
       format.html { render :show }
       format.json { render :show }

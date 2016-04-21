@@ -74,6 +74,7 @@ RSpec.configure do |config|
   end
   config.after(:each) do
     DatabaseCleaner.clean
+    ActionMailer::Base.deliveries.clear
   end
 
   config.include(Capybara::Webkit::RspecMatchers, :type => :feature)

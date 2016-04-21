@@ -3,5 +3,6 @@
   #side-bar.col-md-3
     h1 = yield :title
     = render 'details', track: @track
+    = render 'comments', comments: @track.comments
   .col-md-9#map-col
     .map#map-show-track

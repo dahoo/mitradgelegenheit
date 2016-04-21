@@ -1,0 +1,16 @@
+#comments
+  h2 Kommentare
+  .new-comment
+    - if current_user
+      = simple_form_for @comment, controller: CommentsController, action: :new, html: {class: 'form-vertical' } do |f|
+        = f.input :track_id, as: :hidden
+        = f.input :text, label: false, placeholder: 'Text', input_html: { maxlength: 1000 }
+        = f.button :submit, t(:'simple_form.labels.comments.create'), class: 'btn btn-primary'
+        
+    - else
+      | Bitte 
+      = link_to 'melde dich an', new_user_session_path
+      |, um zu kommentieren
+
+  - comments.each do |comment|
+    = render 'comment', comment: comment

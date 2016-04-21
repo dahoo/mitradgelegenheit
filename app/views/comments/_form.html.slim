@@ -1,0 +1,16 @@
+= form_for @comment do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+      ul
+        - @comment.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = @comment.user.name
+  .field
+    = link_to @comment.track.name, @comment.track
+  .field
+    div= f.label :text
+    div= f.text_area :text
+  .actions = f.submit 'Ändern', class: 'btn btn-primary'

@@ -1,0 +1,4 @@
+h1= t(:'.title.html', track_name: @comment.track_name, link: track_url(@comment.track))
+p= t(:'.author', name: @comment.user_name)
+
+p= simple_format(@comment.text)
