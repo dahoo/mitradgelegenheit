@@ -214,6 +214,9 @@ de:
       track:
         one: Strecke
         other: Strecken
+      comment:
+        one: Kommentar
+        other: Kommentare
 
   meta:
     description: Finde andere mitRADler um gemeinsam Rad zu fahren.
@@ -233,3 +236,9 @@ de:
       title:
         text: 'Neue Strecke eingetragen: %{name}'
         html: 'Neue Strecke eingetragen: <a href=%{link}>%{name}</a>'
+    new_comment:
+      subject: Neuer Kommentar zu %{track_name}
+      title:
+        text: 'Neuer Kommentar zu %{track_name}'
+        html: 'Neuer Kommentar zu <a href=%{link}>%{track_name}</a>'
+      author: '%{name} schrieb:'

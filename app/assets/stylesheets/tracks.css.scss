@@ -35,7 +35,7 @@ body.tracks_controller {
     }
 
     .btn-group {
-      margin-top: 20px;
+      margin-top: 2em;
     }
 
     input[type=text], textarea, select {
@@ -49,5 +49,31 @@ body.tracks_controller {
 
   #start_times .checkbox {
     padding: inherit;
+  }
+
+  #comments {
+    .new-comment {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    .comment {
+      margin-bottom: 1em;
+      background-color: $gray-lighter;
+      padding: 1em;
+
+      .time{
+        margin-bottom: 0.5em;
+      }
+
+      .btn-group {
+        margin-top: 0.5em
+      }
+
+      .name a {
+        text-decoration: none;
+        color: $headings-color;
+      }
+    }
   }
 }

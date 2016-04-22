@@ -24,6 +24,8 @@ module Mitradgelegenheit
     config.i18n.default_locale = :de
     config.i18n.available_locales = :de
 
+    config.time_zone = 'Berlin'
+
     config.autoload_paths << Rails.root.join('lib')
 
     config.middleware.insert_before 0, "Rack::Cors" do

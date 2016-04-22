@@ -1,0 +1,14 @@
+.comment
+  h3.name
+    = link_to comment.user.name, user_path(comment.user) if comment.user
+  .time= l(comment.created_at, format: :short)
+  .text= simple_format(comment.text)
+  - if admin_signed_in? || (user_signed_in? && current_user == comment.user)
+    div
+      .btn-group
+        = link_to edit_comment_path(comment), class: 'btn btn-default'
+          i.fa.fa-edit
+          span.sr-only Ändern
+        = link_to comment_path(comment), method: :delete, data: { confirm: 'Bist du sicher?' }, class: 'btn btn-danger'
+          i.fa.fa-trash
+          span.sr-only Löschen

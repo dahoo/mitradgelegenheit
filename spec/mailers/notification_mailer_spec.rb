@@ -17,4 +17,21 @@ RSpec.describe NotificationMailer, type: :mailer do
       expect(mail.body.encoded).to include(track.name)
     end
   end
+
+  describe 'new_comment' do
+    let!(:user) { track.user }
+    let!(:comment) { FactoryGirl.create :comment, track: track, user: user }
+
+    let(:mail) { NotificationMailer.new_comment(comment, user) }
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq('Neuer Kommentar zu ' + track.name)
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(['info@mitradgelegenheit.de'])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to include(comment.text)
+    end
+  end
 end
