@@ -1,0 +1,143 @@
+//colors
+$black_25: rgba(0, 0, 0, 0.25);
+$white_75: rgba(255, 255, 255, 0.75);
+$black_40: rgba(0,0,0,0.4);
+$color_mercury_approx: #e7e7e7;
+$white: #fff;
+$color_silver_chalice_approx: #aaaaaa;
+
+//fonts
+$font_0: arial;
+
+//urls
+$url_0: url(../images/search-icon.png);
+
+//@extend-elements
+//original selectors
+//.leaflet-control-geosearch, .leaflet-control-geosearch ul
+%extend_1 {
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 7px;
+	background: none repeat scroll 0 0 $black_25;
+	margin: 20px 0 0;
+	padding: 5px;
+	width: 100%;
+	height: auto;
+}
+
+
+.leaflet-center {
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+@media only screen and(max-device-width: 780px) {
+	.leaflet-center {
+		width: 70%;
+	}
+}
+.leaflet-control-geosearch {
+	@extend %extend_1;
+	ul {
+		@extend %extend_1;
+		li {
+			background: none repeat scroll 0 0 $white_75;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 4px;
+			margin: 2px 0;
+			padding: 4px;
+			font: 12px $font_0;
+			text-indent: 4px;
+		}
+	}
+}
+.leaflet-geosearch-autocomplete {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	float: left;
+	width: 100%;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 0 8px $black_40;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	//Instead of the line below you could use @include border-top-left-radius($radius)
+	border-top-left-radius: 0;
+	background-color: $black_25;
+	z-index: 1010;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.leaflet-geosearch-suggestion {
+	padding: 2px;
+	display: block;
+	background: $color_mercury_approx;
+	text-decoration: none;
+	white-space: nowrap;
+	vertical-align: center;
+	&:hover {
+		background-color: $white;
+	}
+}
+.leaflet-geosearch-suggestion-selected {
+	background-color: $white;
+}
+.leaflet-geosearch-submit-button-container {
+	background: none repeat scroll 0 0 $color_silver_chalice_approx;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 4px 4px 4px 4px;
+	height: 24px;
+	margin: 2px 0;
+	position: absolute;
+	right: 8px;
+	width: 27px;
+	.leaflet-geosearch-submit-button {
+		display: block;
+		margin: 2px 0;
+		position: absolute;
+		text-decoration: none;
+		background: $url_0 no-repeat scroll 0 0 transparent;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 4px 4px 4px 4px;
+		height: 22px;
+		width: 22px;
+		right: 2px;
+		&:hover {
+			background: $url_0 no-repeat 0 -21px;
+		}
+	}
+}
+.leaflet-geosearch-cancel-button {
+	background: $url_0 no-repeat scroll 0 -42px transparent;
+	height: 18px;
+	width: 18px;
+	margin-top: 5px;
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+	right: 42px;
+	display: none;
+	position: absolute;
+	text-decoration: none;
+	&:hover {
+		filter: alpha(opacity=100);
+		opacity: 1;
+	}
+}
+.leaflet-control-geosearch-msg ul {
+	list-style: none;
+	display: none;
+	height: auto;
+	background: none;
+	padding: 0;
+}
+.leaflet-container .leaflet-control-geosearch input {
+	width: 100%;
+	height: 28px;
+	padding: 0;
+	text-indent: 8px;
+	background: $white_75;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 4px;
+	border: none;
+}
