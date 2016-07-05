@@ -32,11 +32,11 @@ class ApplicationController < ActionController::Base
     set_meta_tags(
       description: I18n.t(:'meta.description'),
       keywords: ['Fahrrad', 'Rad', 'Mitradgelegenheit', 'Berlin', 'Critical Mass'],
-      canonical: 'http://mitradgelegenheit.de',
+      canonical: 'https://mitradgelegenheit.de',
       og: {
         description: I18n.t(:'meta.description'),
-        url: 'http://mitradgelegenheit.de',
-        image: 'http://mitradgelegenheit.de/logo.png'
+        url: 'https://mitradgelegenheit.de',
+        image: 'https://mitradgelegenheit.de/logo.png'
       }
     )
   end
