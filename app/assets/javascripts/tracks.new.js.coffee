@@ -17,7 +17,7 @@ $(document).ready ->
     $('#new_track').on 'submit', {map: map} , trackEditor.getTrack
 
     $('#start_times').on 'cocoon:after-insert', (e, insertedItem) ->
-      window.bind_wday_date_switch(insertedItem)
+      window.bind_start_time_events(insertedItem)
       $(':checkbox').bootstrapSwitch()
       window.check_to_hide_or_show_remove_link
     $('#start_times').on(
