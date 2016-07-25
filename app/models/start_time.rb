@@ -19,7 +19,11 @@ class StartTime < ActiveRecord::Base
   end
 
   def day_of_week_name
-    (I18n.t :'date.day_names')[(day_of_week + 1) % 7]
+    if day_of_week < 7
+      (I18n.t :'date.day_names')[(day_of_week + 1) % 7]
+    else
+      special_days_of_week_names[day_of_week]
+    end
   end
 
   def time_h_m
@@ -27,9 +31,12 @@ class StartTime < ActiveRecord::Base
   end
 
   def to_s
-    every_text = ''
-    every_text = every_names.invert[every] + ' ' if is_repeated
-    "#{every_text}#{day}, #{time_h_m}"
+    every_text = if is_repeated and day_of_week != 10
+      every_names_inline(day).invert[every]
+    else
+      day
+    end
+    "#{every_text}, #{time_h_m}"
   end
 
   def day
@@ -47,10 +54,20 @@ class StartTime < ActiveRecord::Base
 
   def compute_schedule
     schedule = IceCube::Schedule.new(time.on(track.created_at))
-    if every >= 0
-      rule = IceCube::Rule.weekly(every).day((day_of_week + 1) % 7)
-    else
-      rule = IceCube::Rule.monthly.day_of_week((day_of_week + 1) % 7 => [-1])
+    rule = if day_of_week < 7
+      if every >= 0 and every < 7
+        IceCube::Rule.weekly(every).day((day_of_week + 1) % 7)
+      elsif every < 0
+        IceCube::Rule.monthly.day_of_week((day_of_week + 1) % 7 => [-1])
+      elsif every > 10
+        IceCube::Rule.monthly.day_of_week((day_of_week + 1) % 7 => [every - 10])
+      end
+    elsif day_of_week == 10
+      IceCube::Rule.daily
+    elsif day_of_week == 11
+      IceCube::Rule.weekly.day(1, 2, 3, 4, 5)
+    elsif day_of_week == 12
+      IceCube::Rule.weekly.day(6, 0)
     end
     schedule.add_recurrence_rule(rule)
     schedule

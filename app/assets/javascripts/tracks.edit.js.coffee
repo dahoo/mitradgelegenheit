@@ -22,7 +22,7 @@ $(document).ready ->
       $('#ends').find('.remove_fields').first().hide()
 
     $('#start_times').on 'cocoon:after-insert', (e, insertedItem) ->
-      window.bind_wday_date_switch(insertedItem)
+      window.bind_start_time_events(insertedItem)
       $(':checkbox').bootstrapSwitch()
       window.check_to_hide_or_show_remove_link
     $('#start_times').on(
@@ -34,6 +34,6 @@ $(document).ready ->
 
     for insertedItem in $('#start_times .nested-fields')
       insertedItem = $(insertedItem)
-      window.bind_wday_date_switch(insertedItem, false)
+      window.bind_start_time_events(insertedItem, false)
       $(':checkbox').bootstrapSwitch()
       window.check_to_hide_or_show_remove_link
