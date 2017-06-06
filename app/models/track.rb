@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: tracks
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  distance    :float
+#  time        :string(255)
+#  link        :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  color_index :integer
+#  user_id     :integer
+#  category    :string(255)
+#  description :text             default("")
+#
+# Indexes
+#
+#  index_tracks_on_user_id  (user_id)
+#
+
 class Track < ActiveRecord::Base
   include TracksHelper
 
