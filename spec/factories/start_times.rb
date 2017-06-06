@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: start_times
+#
+#  id          :integer          not null, primary key
+#  day_of_week :integer
+#  time        :time
+#  track_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  date        :date
+#  is_repeated :boolean
+#  every       :integer          default(1)
+#
+# Indexes
+#
+#  index_start_times_on_track_id  (track_id)
+#
+
 FactoryGirl.define do
   factory :start_time do
     day_of_week 1
