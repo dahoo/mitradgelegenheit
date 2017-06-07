@@ -4,8 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  track_id    :integer
-#  latitude    :float
-#  longitude   :float
+#  latitude    :float            not null
+#  longitude   :float            not null
 #  description :string(255)
 #  type        :string(255)
 #  created_at  :datetime
