@@ -1,7 +1,7 @@
 = simple_form_for @track, html: {class: 'form-vertical' } do |f|
   = f.input :name, label: false, placeholder: 'Name', required: true, \
-    input_html: {class: (@track.errors.include?(:name) ? 'error' : '')}
-  = f.input :link, label: false, placeholder: 'Facebook-Event (optional)'
+    input_html: {class: (@track.errors.include?(:name) ? 'error' : ''), maxlength: 255 }
+  = f.input :link, label: false, placeholder: 'Facebook-Event (optional)', input_html: { maxlength: 255 }
   = f.input :category,
     label: false,
     collection: track_categories,

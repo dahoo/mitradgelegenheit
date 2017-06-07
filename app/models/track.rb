@@ -44,6 +44,7 @@ class Track < ActiveRecord::Base
 
   validates :name, presence: true
   validates :category, inclusion: {in: Track.categories}
+  validates :name, :link, :category, length: { maximum: 255 }
 
   attr_reader :points
 
